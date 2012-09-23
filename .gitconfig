@@ -1,0 +1,16 @@
+[user]
+	name = Paul Stadnikov
+	email = paul@stadnikov@gmail.com
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+        edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+        add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+        st = status
+        ci = commit
+        br = branch
+        co = checkout
+        df = diff
+        lp = log -p
+        who = shortlog -s --
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+

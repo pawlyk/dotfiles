@@ -1,0 +1,81 @@
+# Aliases
+# Short command aliases
+alias 'l=ls'
+alias 'll=ls -l'
+alias 'la=ls -al'
+alias 'lq=ls -Q'
+alias 'lr=ls -R'
+alias 'lrs=ls -lrS'
+alias 'lt=ls -lrt'
+alias 'lrta=ls -lrtA'
+alias 'lrth=ls -lrth'
+alias 'lrtha=ls -lrthA'
+alias 'ls=ls --color=auto --human-readable --group-directories-first --classify'
+alias 'sl=ls'
+
+alias '..=cd ..'
+alias '...=cd ../..'
+alias '....=cd ../../..'
+alias '~=cd ~'
+alias '_=sudo'
+
+alias 'tf=tail -f'
+alias 'grep=grep --colour=auto'
+alias 'fgrep=grep -F --color=auto'
+alias 'egrep=grep -E --colour=auto'
+alias 'ack=ack-grep'
+alias 'vnice=nice -n 20 ionice -c 3'
+alias 'get_iplayer=get_iplayer --nopurge'
+
+alias "tree=tree -A -I 'CVS|*~'"
+alias "treea=tree -a"
+alias "treed=tree -a -I '*~|*.png|*.jpg|*.jpeg|*.gif|*.bmp|*.ps|*.pdf|*.tar.gz|*.tgz|*.zip|*.rar|*.rar|.git|.idea|*.swp|*.pyc'"
+alias "treedr=tree -a -I '*~|*.png|*.jpg|*.jpeg|*.gif|*.bmp|*.ps|*.pdf|*.tar.gz|*.tgz|*.zip|*.rar|*.rar|.git|.gitkeep|.idea|.redcar|bin|bundler_stubs|tmp|*.swp|*.pyc|'"
+
+alias 'rcp=rsync -v --progress'
+alias 'rmv=rsync -v --progress --remove-source-files'
+
+alias 'mc=mc -S xoria256'
+
+if command -v colordiff > /dev/null 2>&1; then
+alias "diff=colordiff -Nuar"
+else
+alias "diff=diff -Nuar"
+fi
+
+# Play safe!
+alias 'rm=rm -iv'
+alias 'mv=mv -iv'
+alias 'cp=cp -iv'
+alias "chmod=chmod -c"
+alias "chown=chown -c"
+
+# For convenience
+alias 'mkdir=mkdir -p'
+
+# Typing errors...
+alias 'cd..=cd ..'
+alias 'cd~=cd ~'
+
+# Global aliases (expand whatever their position)
+#  e.g. find . E L
+alias -g L='| less'
+alias -g H='| head'
+alias -g S='| sort'
+alias -g T='| tail'
+alias -g N='> /dev/null'
+alias -g E='2> /dev/null'
+
+# Automatically background processes (no output to terminal etc)
+alias 'z=echo $RANDOM > /dev/null; zz'
+zz () {
+    echo $*
+    $* &> "/tmp/z-${1:gs/\//_}-$RANDOM" &!
+}
+
+# Userful aliases
+alias 'ltmux=if tmux has; then tmux attach; else tmux new; fi'
+alias 'dtmux=sh ~/.tmux/dtmux.sh'
+alias 'rtmux=sh ~/.tmux/rtmux.sh'
+alias 'ptmux=sh ~/.tmux/ptmux.sh'
+
