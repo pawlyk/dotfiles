@@ -15,4 +15,6 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 
 ## Screenshots
 
+**tmux+zsh+vim**
+
 [![terminal](https://github.com/pawlyk/dotfiles/raw/master/screenshots/screenshot.png)](https://github.com/pawlyk/dotfiles/raw/master/screenshots/screenshot.png)
