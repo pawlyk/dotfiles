@@ -1,9 +1,6 @@
 [user]
 	name = Paul Stadnikov
 	email = paul.stadnikov@gmail.com
-[github]
-  user = pawlyk
-  token = TOKEN
 [color]
   ui = auto
   diff = auto

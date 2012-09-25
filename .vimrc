@@ -283,7 +283,7 @@ let g:bufExplorerReverseSort=0
 " Show directories.
 let g:bufExplorerShowDirectories=1
 " Show relative paths.
-let g:bufExplorerShowRelativePath=1
+let g:bufExplorerShowRelativePath=0
 " Show unlisted buffers.
 let g:bufExplorerShowUnlisted=1
 " Sort by most recently used.
