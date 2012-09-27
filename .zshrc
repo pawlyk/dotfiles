@@ -1,16 +1,17 @@
 # .zshrc
 # Author: Paul Stadnikov <paul.stadnikov@gmail.com>
-# Based on configurations created
+# Based on configurations created 
 # Piotr Karbowski <piotr.karbowski@gmail.com>
-# Andriy Senkovych <jolly_roger@itblog.org.ua> https://github.com/jollyroger/config
+# Andriy Senkovych <jolly_roger@itblog.org.ua> https://github.com/jollyroger/config 
 # License: BSD
 # zsh-copletions from here https://github.com/zsh-users/zsh-completions.git
+#rm ~f -f ~/.zsh/.zcompdump; compinit
 
 # Basic zsh config.
 #ZDOTDIR=${ZDOTDIR:-${HOME}}
 ZDOTDIR="${HOME}/.zsh"
 ZSHDDIR="${HOME}/.config/zsh.d"
-HISTFILE="${ZDOTDIR}/zsh_history"
+HISTFILE="${ZDOTDIR}/.zsh_history"
 HISTSIZE='10000'
 SAVEHIST="${HISTSIZE}"
 
@@ -69,7 +70,7 @@ local runcommand="$1"; shift
 if [ "${as_root}" = 'true' ] && [ "${USER}" != 'root' ]; then
 runcommand="sudo ${runcommand}"
 fi
-confirm "${runcommand}" "$@"
+confirm "${runcommand}" "$@"export TERM=xterm-256color
 }
 
 poweroff() { confirm_wrapper --root $0 "$@"; }
@@ -111,7 +112,7 @@ return 1
 
 termtitle() {
 case "$TERM" in
-rxvt*|xterm|nxterm|gnome|screen|screen-*)
+rxvt*|xterm|xterm-256color|nxterm|gnome|screen|screen-*)
 case "$1" in
 precmd)
 print -Pn "\e]0;%n@%m: %~\a"
@@ -286,8 +287,8 @@ done
 
 # Completion.
 #path=(~/.zsh-completions/src $path)
-path=("${ZDOTDIR}/zsh-completions/src" $path)
-
+fpath=("${ZDOTDIR}/zsh-completions/src" $fpath)
+ 
 autoload -U promptinit
 promptinit
 autoload -Uz compinit
@@ -407,10 +408,13 @@ bindkey "^S" history-incremental-pattern-search-forward
 
 if [ -f ~/.alert ]; then cat ~/.alert; fi
 
-# set PYTHONPATH
+# set PYTHONPATH 
 export PYTHONPATH='/usr/share/pyshared;/usr/share/pyshared-data;/usr/share/python;/usr/locale/lib/python2.7;/usr/lib/pymodules/python2.7;/usr/local/lib/python2.7/dist-packages;/usr/local/bin;'
 
-# add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin
-PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p194/bin
+# Load RVM function
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p194/bin
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
