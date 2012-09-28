@@ -32,6 +32,7 @@ Bundle 'c9s/bufexplorer'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'mru.vim'
 Bundle 'Rykka/colorv.vim'
+Bundle 'nanotech/jellybeans.vim'
 Bundle 'codegram/vim-todo'
 Bundle 'sjl/gundo.vim'
 " Commands
@@ -83,7 +84,7 @@ Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'ap/vim-css-color'
 Bundle 'acustodioo/vim-tmux'
 Bundle 'hallison/vim-markdown'
-Bundle 'xhtml.vim--Grny'
+Bundle 'xhtml.vim'
 Bundle 'groenewege/vim-less'
 " Color themes
 Bundle 'twilight256.vim'
@@ -127,8 +128,6 @@ set ruler
 " highlighting special symbols
 set list
 set list listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
-
-" autocmd FileType python set softtabstop=4 shiftwidth=4 expandtab autoindent
 
 " backups
 set nobackup
@@ -204,7 +203,7 @@ set number
 
 " Make the command-line completion better
 set wildmenu
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 set wildmode=list:longest,full
 set wildignore+=.*.sw*,__pycache__,*.pyc
 
@@ -244,7 +243,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
 " Spell-checker
 set wildmenu
-set wcm=<Tab>
+"set wcm=<Tab>
 
 " Spell check:
 " menu SetSpell.off :set nospell<CR>
@@ -263,7 +262,7 @@ set timeoutlen=50
 "disallow more that 1 miniBufExplorer
 let g:miniBufExplorerMoreThanOne = 0
 " If you use other explorers like TagList you can (As of 6.2.8) set it at 1:
-let g:miniBufExplModSelTarget = 1
+let g:miniBufExplModSelTarget = 0
 " make tabs show complete (no broken on two lines)
 let g:miniBufExplTabWrap = 1
 "for buffers that have NOT CHANGED and are NOT VISIBLE.
@@ -285,11 +284,14 @@ let g:bufExplorerShowDirectories=1
 " Show relative paths.
 let g:bufExplorerShowRelativePath=0
 " Show unlisted buffers.
-let g:bufExplorerShowUnlisted=1
+let g:bufExplorerShowUnlisted=0
 " Sort by most recently used.
 let g:bufExplorerSortBy='name'
 " Split new window above current.
 let g:bufExplorerSplitBelow=0
+
+
+set switchbuf=usetab,newtab
 
 "---------------------------------------------------------------------------
 " TagBar Settings
@@ -326,60 +328,47 @@ let g:gundo_preview_height = 40
 "---------------------------------------------------------------------------
 " Neocomplcache Plugin Settings
 "---------------------------------------------------------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_cursor_hold_i=1
+let g:neocomplcache_cursor_hold_i_time=200
+let g:neocomplcache_auto_completion_start_length=3
 
-let g:neocomplcache_enable_ignore_case = 0
-
-let g:neocomplcache_disable_select_mode_mappings = 1
-
-let g:neocomplcache_disable_auto_complete = 1
-
-let g:neocomplcache_enable_auto_select = 1
-
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
-
-" Define keyword.
-if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
-
-" Auto completion via ctrl-space (instead of the nasty ctrl-x ctrl-o)
-set omnifunc=pythoncomplete#Complete
-inoremap <C-space> <C-x><C-o>
-
-" Enable heavy omni completion.
+"Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
 let g:neocomplcache_omni_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w'
+let g:neocomplcache_omni_patterns.python = '[^. *\t]\.\w'
+
+" Required to make neocomplcache_cursor_hold_i_time work
+" See https://github.com/Shougo/neocomplcache/issues/140
+let s:update_time_save = &updatetime
+autocmd InsertEnter * call s:on_insert_enter()
+
+function! s:on_insert_enter()
+  if &updatetime > g:neocomplcache_cursor_hold_i_time
+    let s:update_time_save = &updatetime
+    let &updatetime = g:neocomplcache_cursor_hold_i_time
+  endif
+endfunction
+
+autocmd InsertLeave * call s:on_insert_leave()
+
+function! s:on_insert_leave()
+  if &updatetime < s:update_time_save
+    let &updatetime = s:update_time_save
+  endif
+endfunction
+
+"---------------------------------------------------------------------------
+" SuperTab Plugin Settings
+"---------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 "---------------------------------------------------------------------------
 " CtrlP Plugin Settings
