@@ -43,11 +43,13 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
+Bundle 'ervandew/snipmate.vim'
 Bundle 'gregsexton/MatchTag'
-Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache-snippets-complete'
 " Snippets
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'garbas/vim-snipmate'
+"Bundle 'honza/snipmate-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 " Additional easement
 " MatchIt
@@ -59,7 +61,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'vcscommand.vim'
 " Language Additions
 " Python
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 Bundle 'rainerborene/vim-pony'
 Bundle 'vim-scripts/pydoc.vim'
 "Bundle 'vim-scripts/vim-flake8'
@@ -126,8 +128,9 @@ set showcmd
 set showmatch
 set ruler
 " highlighting special symbols
+"set listchars=eol:␤,tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
+set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
 set list
-set list listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
 
 " backups
 set nobackup
@@ -203,7 +206,11 @@ set number
 
 " Make the command-line completion better
 set wildmenu
-set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone,preview
+" set completion options
+set completeopt=menu,menuone,longest
+" limit popup menu height
+set pumheight=15
 set wildmode=list:longest,full
 set wildignore+=.*.sw*,__pycache__,*.pyc
 

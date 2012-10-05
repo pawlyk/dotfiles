@@ -48,11 +48,23 @@ nnoremap <F5> :GundoToggle<CR>
 " Neocomplcache Plugin Settings
 "---------------------------------------------------------------------------
 " Overrides neocomplcache with regular keyword completion
-inoremap <expr><C-k> "\<C-x><C-n>"
-
+"inoremap <expr><TAB> "\<C-X><C-u>"
+"inoremap <expr><C-TAB> "\<C-x><C-p>"
+"inoremap <expr><S-TAB> "\<C-x><C-n>"
+"
+"imap <expr><Tab>    neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
 " Tab / Shift-Tab to cycle completions
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+"inoremap <expr><TAB> pumvisible() ? "\<C-X><C-O>" : "\<TAB>"
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-n>" : "\<S-TAB>"
+"inoremap <expr><c-TAB> pumvisible() ? "\<C-p>" : "\<c-TAB>"
+"inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+"inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+"inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+"inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+"inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+"inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+"inoremap <expr> <C-d> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+"inoremap <expr> <C-u> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
 "---------------------------------------------------------------------------
 " Set keyboard shortscuts for pasting from outside
