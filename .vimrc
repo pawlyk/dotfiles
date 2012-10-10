@@ -45,7 +45,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
 Bundle 'ervandew/snipmate.vim'
 Bundle 'gregsexton/MatchTag'
-"Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache'
 "Bundle 'Shougo/neocomplcache-snippets-complete'
 " Snippets
 "Bundle 'garbas/vim-snipmate'

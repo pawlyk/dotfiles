@@ -70,37 +70,44 @@ let g:gundo_preview_height = 40
 " Neocomplcache Plugin Settings
 "---------------------------------------------------------------------------
 " Use neocomplcache.
-"let g:neocomplcache_enable_at_startup=1
-"let g:neocomplcache_enable_cursor_hold_i=1
-"let g:neocomplcache_cursor_hold_i_time=200
-"let g:neocomplcache_auto_completion_start_length=3
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_cursor_hold_i=1
+let g:neocomplcache_cursor_hold_i_time=200
+let g:neocomplcache_auto_completion_start_length=1
 
-""Enable heavy omni completion.
-"if !exists('g:neocomplcache_omni_patterns')
-"let g:neocomplcache_omni_patterns = {}
-"endif
-"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w'
-"let g:neocomplcache_omni_patterns.python = '[^. *\t]\.\w'
+"Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w'
+let g:neocomplcache_omni_patterns.python = '[^. *\t]\.\w'
 
-"" Required to make neocomplcache_cursor_hold_i_time work
-"" See https://github.com/Shougo/neocomplcache/issues/140
-"let s:update_time_save = &updatetime
-"autocmd InsertEnter * call s:on_insert_enter()
+let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate/snippets'
 
-"function! s:on_insert_enter()
-  "if &updatetime > g:neocomplcache_cursor_hold_i_time
-    "let s:update_time_save = &updatetime
-    "let &updatetime = g:neocomplcache_cursor_hold_i_time
-  "endif
-"endfunction
+" Required to make neocomplcache_cursor_hold_i_time work
+" See https://github.com/Shougo/neocomplcache/issues/140
+let s:update_time_save = &updatetime
+autocmd InsertEnter * call s:on_insert_enter()
 
-"autocmd InsertLeave * call s:on_insert_leave()
+function! s:on_insert_enter()
+  if &updatetime > g:neocomplcache_cursor_hold_i_time
+    let s:update_time_save = &updatetime
+    let &updatetime = g:neocomplcache_cursor_hold_i_time
+  endif
+endfunction
 
-"function! s:on_insert_leave()
-  "if &updatetime < s:update_time_save
-    "let &updatetime = s:update_time_save
-  "endif
-"endfunction
+autocmd InsertLeave * call s:on_insert_leave()
+
+function! s:on_insert_leave()
+  if &updatetime < s:update_time_save
+    let &updatetime = s:update_time_save
+  endif
+endfunction
+
+" Disable auto popup, use <Tab> to autocomplete
+let g:clang_complete_auto = 1
+" Show clang errors in the quickfix window
+let g:clang_complete_copen = 1
 
 "---------------------------------------------------------------------------
 " SuperTab Plugin Settings
@@ -112,10 +119,6 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
- " Disable auto popup, use <Tab> to autocomplete
- let g:clang_complete_auto = 0
- " Show clang errors in the quickfix window
- let g:clang_complete_copen = 1
 "---------------------------------------------------------------------------
 " CtrlP Plugin Settings
 "---------------------------------------------------------------------------
