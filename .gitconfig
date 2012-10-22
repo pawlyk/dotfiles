@@ -29,9 +29,9 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
     up = "!(git add . && git stash && git pull --rebase >&2) | grep -v 'No local changes to save' && git stash pop"
-    in  = "!git remote update -p; git log ..@{u}"
+    in  = "!(git remote update -p; git log ..@{u})"
     out = "log @{u}.."
-    addremove = "git add . && git ls-files --deleted | xargs --no-run-if-empty git rm"
+    addremove = "!(git add . && git ls-files --deleted | xargs --no-run-if-empty git rm)"
 
     unstage = "reset HEAD --"
     backup = "file=../`git describe`.tar && echo 'Creating `readlink -f $file`' && tar cf $file ."
