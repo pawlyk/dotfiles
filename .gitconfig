@@ -1,44 +1,59 @@
 [user]
-	name = Paul Stadnikov
-	email = paul.stadnikov@gmail.com
+    name = Paul Stadnikov
+    email = paul.stadnikov@gmail.com
 [color]
-  ui = auto
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 [color "branch"]
-  current = green bold
-  local = green
-  remote = red bold
+    current = green bold
+    local = green
+    remote = red bold
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 [color "status"]
-  added = green bold
-  changed = yellow bold
-  untracked = red
+    added = green bold
+    changed = yellow bold
+    untracked = red
 [color "sh"]
-  branch = yellow
+    branch = yellow
 [alias]
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-  aa = add .
-  st = status
-  ci = commit
-  br = branch
-  co = checkout
-  df = diff
-  lp = log -p
-  who = shortlog -s --
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    who = "shortlog -s --"
+    lp = log -p
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+    up = "!(git add . && git stash && git pull --rebase >&2) | grep -v 'No local changes to save' && git stash pop"
+    in  = "!git remote update -p; git log ..@{u}"
+    out = "log @{u}.."
+    addremove = "git add . && git ls-files --deleted | xargs --no-run-if-empty git rm"
+
+    unstage = "reset HEAD --"
+    backup = "file=../`git describe`.tar && echo 'Creating `readlink -f $file`' && tar cf $file ."
+
+    edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+    add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+    aa = add .
+    st = status -sb
+    ci = commit
+    br = branch
+    bra = branch -a
+    co = checkout
+    df = diff
+    chp =  cherry-pick
+    pr = "pull --rebase"
+    bl = "blame -b -w"
+    cia = "commit --amend"
+    pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
 [merge]
-  log = true
+    log = true
 [core]
-  editor = gvim -f
+    editor = gvim -f
 
 
