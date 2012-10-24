@@ -63,8 +63,8 @@ let MRU_Max_Submenu_Entries = 15
 "---------------------------------------------------------------------------
 " Gundo Plugin Settings
 "---------------------------------------------------------------------------
-let g:gundo_width = 30
-let g:gundo_preview_height = 40
+"let g:gundo_width = 30
+"let g:gundo_preview_height = 40
 
 "---------------------------------------------------------------------------
 " Neocomplcache Plugin Settings
@@ -128,6 +128,16 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_custom_ignore = '\.exe$\|\.so$\|\.dll$'
 let g:ctrlp_custom_ignore = 'some_bad_symbolic_links' 
 let g:ctrlp_user_command = 'find %s -type f'
+
+"---------------------------------------------------------------------------
+" Fugitive Settings
+"---------------------------------------------------------------------------
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
 
 "---------------------------------------------------------------------------
 " NERD Tree Plugin Settings

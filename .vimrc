@@ -34,7 +34,8 @@ Bundle 'mru.vim'
 Bundle 'Rykka/colorv.vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'codegram/vim-todo'
-Bundle 'sjl/gundo.vim'
+"Bundle 'sjl/gundo.vim'
+Bundle 'mbbill/undotree'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
@@ -169,9 +170,6 @@ set backspace=2
 " Make sure that unsaved buffers that are to be put in the background are 
 " allowed to go in there (ie. the "must save first" error doesn't come up)
 set hidden
-
-" Set the status line the way i like it <<<
-" set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2

@@ -42,7 +42,7 @@ imap <F4> <esc>:MRU<cr>
 " Gundo Plugin Settings
 "---------------------------------------------------------------------------
 " Toggle the Gundo on an off with F5
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F5> <esc> :UndotreeToggle<cr>
 
 "---------------------------------------------------------------------------
 " Neocomplcache Plugin Settings
