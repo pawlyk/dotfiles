@@ -10,12 +10,11 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 ## Installation
 
 1. Install requarements
-    - Install ack (sudo apt-get install ack-grep)
+    - Install ack `sudo apt-get install ack-grep`
+    - Install ctags `sudo apt-get install ctags`
     - Install custom Menlo font for Powerline from https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-
-
-2. Install Vundle
-3. git clone
+2. Install Vundle `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+3. Clone repository `git clone https://github.com/pawlyk/dotfiles.git`
 4. 
 
 
