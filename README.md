@@ -55,7 +55,7 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * neocomplcache https://github.com/Shougo/neocomplcache
 * neosnippet https://github.com/Shougo/neosnippet
 * snipmate-snippets https://github.com/honza/snipmate-snippets
-* vim-addon-mw-utilshttps://github.com/MarcWeber/vim-addon-mw-utils
+* vim-addon-mw-utilsh ttps://github.com/MarcWeber/vim-addon-mw-utils
 * matchit http://www.vim.org/scripts/script.php?script_id=39
 * tlib_vim https://github.com/tomtom/tlib_vim
 * vcscommand https://github.com/vcscommand.vim
