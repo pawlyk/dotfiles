@@ -32,6 +32,7 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * zsh-completiions https://github.com/zsh-users/zsh-completions
 * zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search
 * zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+
 ### Vim 
 * Vundle https://github.com/gmarik/vundle
 * ctrlp https://github/kien/ctrlp.vim
