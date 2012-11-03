@@ -61,63 +61,110 @@ let MRU_Max_Menu_Entries = 100
 let MRU_Max_Submenu_Entries = 15
 
 "---------------------------------------------------------------------------
-" Gundo Plugin Settings
-"---------------------------------------------------------------------------
-"let g:gundo_width = 30
-"let g:gundo_preview_height = 40
-
-"---------------------------------------------------------------------------
 " Neocomplcache Plugin Settings
 "---------------------------------------------------------------------------
 " Use neocomplcache.
-let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_cursor_hold_i=1
-let g:neocomplcache_cursor_hold_i_time=200
-let g:neocomplcache_auto_completion_start_length=1
+"let g:neocomplcache_enable_at_startup=1
+"let g:neocomplcache_enable_cursor_hold_i=1
+"let g:neocomplcache_cursor_hold_i_time=200
+"let g:neocomplcache_auto_completion_start_length=1
 
-"Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-let g:neocomplcache_omni_patterns = {}
+""Enable heavy omni completion.
+"if !exists('g:neocomplcache_omni_patterns')
+"let g:neocomplcache_omni_patterns = {}
+"endif
+"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w'
+"let g:neocomplcache_omni_patterns.python = '[^. *\t]\.\w'
+
+"let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate/snippets'
+
+"" Required to make neocomplcache_cursor_hold_i_time work
+"" See https://github.com/Shougo/neocomplcache/issues/140
+"let s:update_time_save = &updatetime
+"autocmd InsertEnter * call s:on_insert_enter()
+
+"function! s:on_insert_enter()
+  "if &updatetime > g:neocomplcache_cursor_hold_i_time
+    "let s:update_time_save = &updatetime
+    "let &updatetime = g:neocomplcache_cursor_hold_i_time
+  "endif
+"endfunction
+
+"autocmd InsertLeave * call s:on_insert_leave()
+
+"function! s:on_insert_leave()
+  "if &updatetime < s:update_time_save
+    "let &updatetime = s:update_time_save
+  "endif
+"endfunction
+
+"" Disable auto popup, use <Tab> to autocomplete
+"let g:clang_complete_auto = 1
+"" Show clang errors in the quickfix window
+"let g:clang_complete_copen = 1
+
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_auto_delimiter = 1
+let g:neocomplcache_max_list = 15
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
+
+" AutoComplPop like behavior.
+let g:neocomplcache_enable_auto_select = 0
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
 endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w'
-let g:neocomplcache_omni_patterns.python = '[^. *\t]\.\w'
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate/snippets'
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" Required to make neocomplcache_cursor_hold_i_time work
-" See https://github.com/Shougo/neocomplcache/issues/140
-let s:update_time_save = &updatetime
-autocmd InsertEnter * call s:on_insert_enter()
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-function! s:on_insert_enter()
-  if &updatetime > g:neocomplcache_cursor_hold_i_time
-    let s:update_time_save = &updatetime
-    let &updatetime = g:neocomplcache_cursor_hold_i_time
-  endif
-endfunction
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 
-autocmd InsertLeave * call s:on_insert_leave()
+"---------------------------------------------------------------------------
+" Neosnippet Plugin Settings
+"---------------------------------------------------------------------------
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
-function! s:on_insert_leave()
-  if &updatetime < s:update_time_save
-    let &updatetime = s:update_time_save
-  endif
-endfunction
-
-" Disable auto popup, use <Tab> to autocomplete
-let g:clang_complete_auto = 1
-" Show clang errors in the quickfix window
-let g:clang_complete_copen = 1
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 
 "---------------------------------------------------------------------------
 " SuperTab Plugin Settings
 "---------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+"let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabContextDefaultCompletionType = "<c-n>"
+"let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+"let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+"let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 "---------------------------------------------------------------------------
 " CtrlP Plugin Settings
@@ -151,7 +198,9 @@ let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                   \ '\.intermediate\.manifest$', '^mt.dep$' ]
+                   \ '\.intermediate\.manifest$', '^mt.dep$',
+                   \ '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', 
+                   \ '\.hg', '\.svn', '\.bzr']
 
 "---------------------------------------------------------------------------
 " snipMate Plugin Settings

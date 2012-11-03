@@ -286,7 +286,6 @@ for zshd in $(ls -A ${HOME}/.config/zsh.d/^*.(z)sh$); do
 done
 
 # Completion.
-#path=(~/.zsh-completions/src $path)
 fpath=("${ZDOTDIR}/zsh-completions/src" $fpath)
  
 autoload -U promptinit
@@ -366,7 +365,13 @@ export TMPDIR="$TMP"
 if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
 
 # Aliases
-. "${ZDOTDIR}/zsh_aliases"
+source ${ZDOTDIR}/zsh_aliases
+
+# syntax highlighting
+source ${ZDOTDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History  search
+source ${ZDOTDIR}/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # Keys.
 case $TERM in
@@ -412,7 +417,6 @@ if [ -f ~/.alert ]; then cat ~/.alert; fi
 export PYTHONPATH='/usr/share/pyshared;/usr/share/pyshared-data;/usr/share/python;/usr/locale/lib/python2.7;/usr/lib/pymodules/python2.7;/usr/local/lib/python2.7/dist-packages;/usr/local/bin;'
 
 # Load RVM function
-
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 #PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p194/bin

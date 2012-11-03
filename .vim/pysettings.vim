@@ -1,13 +1,6 @@
 "---------------------------------------------------------------------------
 " Python Settings
 "---------------------------------------------------------------------------
-
-" Disable pylint checking every save
-let g:pymode_lint_write = 0
-
-" Set key 'R' for run python code
-let g:pymode_run_key = 'R'
-
 " Load show documentation plugin
 let g:pymode_doc = 1
 
@@ -25,7 +18,7 @@ let g:pymode_run_key = '<leader>r'
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
-"let g:pymode_lint_checker = "pyflakes"
+let g:pymode_lint_checker = "pyflakes"
 
 " Skip errors and warnings
 " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
@@ -40,10 +33,10 @@ let g:pymode_run_key = '<leader>r'
 
 " Pylint configuration file
 " If file not found use 'pylintrc' from python-mode plugin directory
-"let g:pymode_lint_config = "$HOME/.pylintrc"
+let g:pymode_lint_config = "$HOME/.pylintrc"
 
 " Check code every save
-"let g:pymode_lint_write = 1
+let g:pymode_lint_write = 1
 
 " Auto open cwindow if errors be finded
 "let g:pymode_lint_cwindow = 1

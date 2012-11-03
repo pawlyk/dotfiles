@@ -11,15 +11,15 @@ nmap <F1> :NERDTreeToggle $HOME<CR>
 " Tag List Settings
 "---------------------------------------------------------------------------
 " Toggle the Tag List on an off with F2
-map <F2> <esc>:TlistToggle<cr>
-vmap <F2> <esc>:TlistToggle<cr>
-imap <F2> <esc>:TlistToggle<cr>
+"map <F2> <esc>:TlistToggle<cr>
+"vmap <F2> <esc>:TlistToggle<cr>
+"imap <F2> <esc>:TlistToggle<cr>
 
 "---------------------------------------------------------------------------
 " TagBar Settings
 "---------------------------------------------------------------------------
 " Toggle the TagBar on an off with F2
-"nmap <F2> :TagbarToggle<CR> 
+nmap <F2> :TagbarToggle<CR> 
 
 
 "---------------------------------------------------------------------------
@@ -39,9 +39,9 @@ vmap <F4> <esc>:MRU<cr>
 imap <F4> <esc>:MRU<cr>
 
 "---------------------------------------------------------------------------
-" Gundo Plugin Settings
+" Undotree Plugin Settings
 "---------------------------------------------------------------------------
-" Toggle the Gundo on an off with F5
+" Toggle the Undotree on an off with F5
 nnoremap <F5> <esc> :UndotreeToggle<cr>
 
 "---------------------------------------------------------------------------
@@ -65,6 +65,44 @@ nnoremap <F5> <esc> :UndotreeToggle<cr>
 "inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 "inoremap <expr> <C-d> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
 "inoremap <expr> <C-u> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+
+" SuperTab like snippets behavior.
+imap <silent><expr><tab> neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+smap <tab> <right><plug>(neocomplcache_snippets_jump)
+
+" Plugin key-mappings.
+" Ctrl-k expands snippet & moves to next position
+" <CR> chooses highlighted value
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+inoremap <expr><CR> neocomplcache#complete_common_string()
+
+
+" <CR>: close popup
+" <s-CR>: close popup and save indent.
+inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+
+"---------------------------------------------------------------------------
+" Neocomplcache Plugin Settings
+"---------------------------------------------------------------------------
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 "---------------------------------------------------------------------------
 " Set keyboard shortscuts for pasting from outside

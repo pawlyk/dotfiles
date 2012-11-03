@@ -21,20 +21,18 @@ Bundle 'gmarik/vundle'
 "---------------------------------------------------------------------------
 
 " Navigation
-Bundle 'wincent/Command-T'
 Bundle 'kien/ctrlp.vim'
 " UI Additions
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'taglist.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'c9s/bufexplorer'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'mru.vim'
 Bundle 'Rykka/colorv.vim'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'codegram/vim-todo'
-"Bundle 'sjl/gundo.vim'
 Bundle 'mbbill/undotree'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
@@ -43,14 +41,15 @@ Bundle 'mileszs/ack.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'ervandew/snipmate.vim'
+"Bundle 'ervandew/supertab'
+"Bundle 'ervandew/snipmate.vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'Shougo/neocomplcache'
 "Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet'
 " Snippets
 "Bundle 'garbas/vim-snipmate'
-"Bundle 'honza/snipmate-snippets'
+Bundle 'honza/snipmate-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 " Additional easement
 " MatchIt
@@ -90,8 +89,6 @@ Bundle 'hallison/vim-markdown'
 Bundle 'xhtml.vim'
 Bundle 'groenewege/vim-less'
 " Color themes
-Bundle 'twilight256.vim'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'vim-scripts/xoria256.vim'
 
 filetype plugin indent on " Automatically detect file types. (must turn on after Vundle)

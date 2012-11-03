@@ -2,7 +2,8 @@
 # Short command aliases
 alias 'l=ls'
 alias 'll=ls -l'
-alias 'la=ls -al'
+alias 'la=ls -a'
+alias 'lla=ls -al'
 alias 'lq=ls -Q'
 alias 'lr=ls -R'
 alias 'lrs=ls -lrS'
