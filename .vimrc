@@ -60,7 +60,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'vcscommand.vim'
 " Language Additions
 " Python
-"Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
 Bundle 'rainerborene/vim-pony'
 Bundle 'vim-scripts/pydoc.vim'
 "Bundle 'vim-scripts/vim-flake8'
@@ -85,7 +85,9 @@ Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
 Bundle 'ap/vim-css-color'
 Bundle 'acustodioo/vim-tmux'
 Bundle 'hallison/vim-markdown'
+Bundle 'xhtml.vim'
 Bundle 'groenewege/vim-less'
+Bundle 'juvenn/mustache.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
 
