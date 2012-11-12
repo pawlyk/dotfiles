@@ -195,12 +195,12 @@ let NERDTreeShowHidden=1
 let NERDTreeShowBookmarks=1
 
 " Don't display these kinds of files
-let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$', '\.idea',
                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
                    \ '\.intermediate\.manifest$', '^mt.dep$',
-                   \ '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', 
-                   \ '\.hg', '\.svn', '\.bzr']
+                   \ '\.pyc', '\.pyo', '\~$', '\.swo$', '\.swp$', 
+                   \ '\.git$', '\.hg$', '\.svn$', '\.bzr$']
 
 "---------------------------------------------------------------------------
 " snipMate Plugin Settings
