@@ -1,6 +1,6 @@
 [user]
     name = Paul Stadnikov
-    email = paul.stadnikov@gmail.com
+    email = p.stadnikov@fix-digital.com
 [color]
     ui = auto
     diff = auto
@@ -51,6 +51,37 @@
     bl = "blame -b -w"
     cia = "commit --amend"
     pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
+; aliases for git extras https://github.com/visionmedia/git-extras
+    extras = extras
+    squash = squash
+    summary = summary
+    effort = effort
+    changelog = changelog
+    commits-since = commits-since
+    count = count
+    create-branch = create-branch
+    delete-branch = delete-branch
+    delete-submodule = delete-submodule
+    delete-tag = delete-tag
+    fresh-branch = fresh-branch
+    graft = graft
+    alias = alias
+    ignore = ignore
+    info = info
+    release = release
+    contrib = contrib
+    repl = repl
+    undo = undo
+    gh-pages = gh-pages
+    setup = setup
+    touch = touch
+    obliterate = obliterate
+    feature = feature
+    refactor = refactor
+    bug = bug
+    promote = promote
+    local-commits = local-commits
+
 [merge]
     log = true
 [core]
