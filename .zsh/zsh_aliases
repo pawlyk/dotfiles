@@ -119,7 +119,7 @@ alias 'rgs=rails generate scaffold'
 alias 'rgsc=rails generate scaffold_controller'
 alias 'rgsm=rails generate session_migration'
 alias 'rgt=rails generate task'
-alias 'rgc=rails generate coffee:assets'
+alias 'rgca=rails generate coffee:assets'
 alias 'rgjq=rails generate jquery:assets'
 alias 'rgjs=rails generate js:assets'
 
