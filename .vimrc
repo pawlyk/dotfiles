@@ -74,7 +74,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-rvm'
-Bundle 'spllr/vim-padrino'
+"Bundle 'spllr/vim-padrino'
 " JavaScript
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
@@ -90,6 +90,8 @@ Bundle 'hallison/vim-markdown'
 Bundle 'xhtml.vim'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
+Bundle 'sql.vim'
+Bundle 'SQLComplete.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
 
