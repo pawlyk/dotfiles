@@ -34,6 +34,7 @@ Bundle 'Rykka/colorv.vim'
 Bundle 'codegram/vim-todo'
 Bundle 'mbbill/undotree'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'airblade/vim-gitgutter'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'

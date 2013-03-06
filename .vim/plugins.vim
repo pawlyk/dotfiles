@@ -208,3 +208,10 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$', '\.idea',
 " Toggle the snipMate on an off with Tab
 :filetype plugin on
 
+"---------------------------------------------------------------------------
+" Vim Git Gutter Plugin Settings
+"---------------------------------------------------------------------------
+" Turn on git-gutter
+let g:gitgutter_enabled = 1
+" Turn on git-gutter highlight
+let g:gitgutter_highlights = 1
