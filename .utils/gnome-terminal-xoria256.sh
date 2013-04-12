@@ -15,3 +15,4 @@ gconftool-2 --set "/apps/gnome-terminal/profiles/Default/use_theme_colors" --typ
 gconftool-2 --set "/apps/gnome-terminal/profiles/Default/palette" --type string "$PALETTE"
 gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "$BG_COLOR"
 gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "$FG_COLOR"
+gconftool-2 --set "/apps/guake/style/font/palette" --type string "$PALETTE"
