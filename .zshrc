@@ -5,7 +5,7 @@
 # Andriy Senkovych <jolly_roger@itblog.org.ua> https://github.com/jollyroger/config 
 # License: BSD
 # zsh-copletions from here https://github.com/zsh-users/zsh-completions.git
-#rm ~f -f ~/.zsh/.zcompdump; compinit
+#rm -f ~/.zsh/.zcompdump; compinit
 
 # Basic zsh config.
 #ZDOTDIR=${ZDOTDIR:-${HOME}}
@@ -418,7 +418,7 @@ export PYTHONPATH='/usr/share/pyshared;/usr/share/pyshared-data;/usr/share/pytho
 
 # Load RVM function
 # Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/.rvm/gems/ruby-1.9.3-p194/bin
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#PATH=$PATH:$HOME/.rvm/scripts
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
