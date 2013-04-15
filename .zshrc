@@ -327,6 +327,9 @@ RPROMPT='[%{${fg[cyan]}%}%*%{${reset_color}%}]'
 ;;
 esac
 
+PROMPT="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+
+
 # Report CPU usage for commands running longer than 10 seconds
 REPORTTIME=10
 
