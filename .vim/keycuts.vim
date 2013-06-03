@@ -115,3 +115,21 @@ imap <C-V> <esc>"+gPi
 " VimPdb Settings
 "---------------------------------------------------------------------------
 
+"---------------------------------------------------------------------------
+" Set keyboard shortscuts for switch betwen relative and absolute line numbers
+"---------------------------------------------------------------------------
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-s> :call NumberToggle()<cr>
+
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
