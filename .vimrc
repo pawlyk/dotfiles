@@ -7,6 +7,7 @@
 " Vundle
 "---------------------------------------------------------------------------
 
+autocmd! BufWritePost .vimrc source %
 set nocompatible " be iMproved
 filetype off " required!
 
@@ -49,9 +50,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'terryma/vim-multiple-cursors'
 " Snippets
 "Bundle 'garbas/vim-snipmate'
-"Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 " Additional easement
 " MatchIt
@@ -96,6 +96,7 @@ Bundle 'sql.vim'
 Bundle 'SQLComplete.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
+"Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on " Automatically detect file types. (must turn on after Vundle)
 
@@ -157,6 +158,7 @@ set browsedir=buffer
 set ignorecase
 set hlsearch
 set incsearch
+set smartcase
 
 " regexp
 set magic
@@ -195,11 +197,12 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 
 " Set the textwidth to be 80 chars
 set textwidth=82
-" set colorcolumn=80
+set colorcolumn=82
 set linebreak
 set listchars+=precedes:<,extends:>
-    
-
+" highlight color colunm
+"highlight ColorColumn ctermbg=239
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 " Trying out the line numbering thing... never liked it, but that doesn't mean
 " I shouldn't give it another go :)
 set number
@@ -221,23 +224,10 @@ set spelllang=en_us
 " Set the status line the way i like it
 set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
-" Add a GUID to the current line
-imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
-
-" Underline the current line with '='
-nmap <silent> ,ul :t.\|s/./=/g\|:nohls<cr>
-
 " Highlight the current line and column
 " Don't do this - It makes window redraws painfully slow
 " set nocursorline
 " set nocursorcolumn
-
-" The following beast is something i didn't write... it will return the 
-" syntax highlighting group that the current "thing" under the cursor
-" belongs to -- very useful for figuring out what to change as far as 
-" syntax highlighting goes.
-nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
 
 " Mouse scrolling
 set mouse=a

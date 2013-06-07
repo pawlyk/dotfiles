@@ -170,11 +170,16 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
 " CtrlP Plugin Settings
 "---------------------------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_custom_ignore = '\.exe$\|\.so$\|\.dll$'
-let g:ctrlp_custom_ignore = 'some_bad_symbolic_links' 
-let g:ctrlp_user_command = 'find %s -type f'
+"set wildignore+=*/tmp/*,*/.idea/*,*_build/*,*/coverage/*,*.so,*.swp,*.zip,*.pyc,*.pyo
+""let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.bzr$'
+""let g:ctrlp_custom_ignore = '\.exe$\|\.so$\|\.dll$\|\.obj$'
+""let g:ctrlp_custom_ignore = '\.swo$\|\.swp$\|\.pyc$\|\.pyo$'
+""let g:ctrlp_custom_ignore = 'some_bad_symbolic_links' 
+"let g:ctrlp_custom_ignore = {
+            "\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.bzr$',
+            "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.obj$\|\.swo$\|\.swp$\|\.pyc$\|\.pyo$'
+            "\ }
+"let g:ctrlp_user_command = 'find %s -type f'
 
 "---------------------------------------------------------------------------
 " Fugitive Settings
