@@ -153,3 +153,9 @@ nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . 
 vnoremap < <gv
 vnoremap > >gv
 
+" call ack
+nmap <Leader>a <Esc>:Ack!
+
+" code folding
+set foldmethod=indent
+set foldlevel=99

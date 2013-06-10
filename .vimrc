@@ -69,6 +69,7 @@ Bundle 'vim-scripts/pydoc.vim'
 "Bundle 'vim-scripts/vim-flake8'
 Bundle 'mjbrownie/pythoncomplete.vim'
 "Bundle 'ethanrublee/VimPdb'
+Bundle 'davidhalter/jedi-vim'
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
@@ -196,10 +197,11 @@ set mousehide
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Set the textwidth to be 80 chars
-set textwidth=82
-set colorcolumn=82
+set textwidth=80
+set colorcolumn=80
 set linebreak
 set listchars+=precedes:<,extends:>
+set wrap linebreak textwidth=0
 " highlight color colunm
 "highlight ColorColumn ctermbg=239
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey

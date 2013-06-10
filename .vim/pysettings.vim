@@ -1,17 +1,17 @@
 "---------------------------------------------------------------------------
-" Python Settings
+" Python Mode Settings
 "---------------------------------------------------------------------------
 " Load show documentation plugin
 let g:pymode_doc = 1
 
 " Key for show python documentation
-let g:pymode_doc_key = 'K'
+"let g:pymode_doc_key = 'K'
 
 " Load run code plugin
 let g:pymode_run = 1
 
 " Key for run python code
-let g:pymode_run_key = '<leader>r'
+let g:pymode_run_key = '<leader>R'
 
 " Load pylint code plugin
 let g:pymode_lint = 1
@@ -73,31 +73,31 @@ let g:pymode_rope_auto_project = 1
 let g:pymode_rope_enable_autoimport = 1
 
 " Auto generate global cache
-let g:pymode_rope_autoimport_generate = 1
+"let g:pymode_rope_autoimport_generate = 1
 
-let g:pymode_rope_autoimport_underlineds = 0
+"let g:pymode_rope_autoimport_underlineds = 0
 
-let g:pymode_rope_codeassist_maxfixes = 10
+"let g:pymode_rope_codeassist_maxfixes = 10
 
-let g:pymode_rope_sorted_completions = 1
+"let g:pymode_rope_sorted_completions = 1
 
-let g:pymode_rope_extended_complete = 1
+"let g:pymode_rope_extended_complete = 1
 
-let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
+"let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
 
-let g:pymode_rope_confirm_saving = 1
+"let g:pymode_rope_confirm_saving = 1
 
-let g:pymode_rope_global_prefix = "<C-x>p"
+"let g:pymode_rope_global_prefix = "<C-x>p"
 
-let g:pymode_rope_local_prefix = "<C-c>r"
+"let g:pymode_rope_local_prefix = "<C-c>r"
 
-let g:pymode_rope_vim_completion = 1
+"let g:pymode_rope_vim_completion = 1
 
-let g:pymode_rope_guess_project = 1
+"let g:pymode_rope_guess_project = 1
 
-let g:pymode_rope_goto_def_newwin = ""
+"let g:pymode_rope_goto_def_newwin = ""
 
-let g:pymode_rope_always_show_complete_menu = 0
+"let g:pymode_rope_always_show_complete_menu = 0
 
 " Enable python folding
 let g:pymode_folding = 0
@@ -164,3 +164,28 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 
 " For fast machines
 let g:pymode_syntax_slow_sync = 0
+
+
+"---------------------------------------------------------------------------
+" Jedi Settings
+"---------------------------------------------------------------------------
+" The goto is by default on <leader g>
+let g:jedi#goto_command = "<leader>g"
+
+" get_definition is by default on <leader d>
+let g:jedi#get_definition_command = "<leader>d"
+
+" Showing the pydoc is by default on K
+let g:jedi#pydoc = "K"
+
+" Jedi selects the first line of the completion menu: for a better typing-flow and usually saves one keypress.
+let g:jedi#popup_select_first = 0
+
+" There's some support for refactoring
+let g:jedi#rename_command = "<leader>r"
+
+" And you can list all names that are related (have the same origin)
+let g:jedi#related_names_command = "<leader>n"
+
+" If you want to change the default autocompletion command:
+let g:jedi#autocompletion_command = "<C-Space>" 
