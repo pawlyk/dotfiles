@@ -19,7 +19,7 @@ nmap <F1> :NERDTreeToggle $HOME<CR>
 " TagBar Settings
 "---------------------------------------------------------------------------
 " Toggle the TagBar on an off with F2
-nmap <F2> :TagbarToggle<CR> 
+nmap <F2> :TagbarToggle<CR>
 
 
 "---------------------------------------------------------------------------
@@ -128,8 +128,9 @@ endfunc
 
 nnoremap <C-s> :call NumberToggle()<cr>
 
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+au FocusLost * :set number
+au FocusLost * :wa
+au FocusGained * :set relativenumber
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
@@ -141,11 +142,11 @@ autocmd InsertLeave * :set relativenumber
 imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 
 " Underline the current line with '='
-nmap <silent> ,ul :t.\|s/./=/g\|:nohls<cr>
+nmap <silent> <Leader>ul :t.\|s/./=/g\|:nohls<cr>
 
-" The following beast is something i didn't write... it will return the 
+" The following beast is something i didn't write... it will return the
 " syntax highlighting group that the current "thing" under the cursor
-" belongs to -- very useful for figuring out what to change as far as 
+" belongs to -- very useful for figuring out what to change as far as
 " syntax highlighting goes.
 nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
@@ -158,4 +159,41 @@ nmap <Leader>a <Esc>:Ack!
 
 " code folding
 set foldmethod=indent
+"set foldnestmax=10
+"set nofoldenable
 set foldlevel=99
+"augroup vimrc
+  "au BufReadPre * setlocal foldmethod=syntax
+  "au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+"augroup END
+inoremap <C-Space> <C-O>za
+nnoremap <C-Space> za
+onoremap <C-Space> <C-C>za
+vnoremap <C-Space> zf
+
+" Set to ; the same behavior that :
+nnoremap ; :
+
+" strip all trailing whitespace in the current file
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+
+" Fold html tag
+nnoremap <leader>ft Vatzf
+
+" Sort CSS
+nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+
+" Rehardwrap paragraphs of text
+nnoremap <leader>q gqip
+
+" reselect the text that was just pasted
+nnoremap <leader>v V`]
+
+" Split window verticaly
+nnoremap <leader>w <C-w>v<C-w>l
+
+" Movements beetwen windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l

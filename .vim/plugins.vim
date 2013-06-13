@@ -220,3 +220,9 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$', '\.idea',
 let g:gitgutter_enabled = 1
 " Turn on git-gutter highlight
 let g:gitgutter_highlights = 1
+
+"---------------------------------------------------------------------------
+" Rainbow Parentheses Improved Plugin Settings
+"---------------------------------------------------------------------------
+let g:rainbow_active=1
+let g:rainbow_operators=1

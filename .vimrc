@@ -36,6 +36,7 @@ Bundle 'codegram/vim-todo'
 Bundle 'mbbill/undotree'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'vim-scripts/Rainbow-Parentheses-Improved-and2'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
@@ -48,6 +49,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'gregsexton/MatchTag'
 Bundle 'Shougo/neocomplcache'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-surround'
 " Snippets
 "Bundle 'garbas/vim-snipmate'
 Bundle 'Shougo/neosnippet'
@@ -120,6 +122,7 @@ filetype indent plugin on
 
 " Set default file encoding
 set fileencoding=utf-8
+set encoding=utf-8
 
 filetype indent on
 
@@ -135,7 +138,7 @@ set showmatch
 set ruler
 " highlighting special symbols
 "set listchars=eol:␤,tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
-set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
+set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×,eol:¬
 set list
 
 " backups
@@ -156,10 +159,13 @@ set autochdir
 set browsedir=buffer
 
 " search
+nnoremap / /\v
+vnoremap / /\v
 set ignorecase
+set smartcase
 set hlsearch
 set incsearch
-set smartcase
+set showmatch
 
 " regexp
 set magic
@@ -202,9 +208,9 @@ set colorcolumn=80
 set linebreak
 set listchars+=precedes:<,extends:>
 set wrap linebreak textwidth=0
-" highlight color colunm
-"highlight ColorColumn ctermbg=239
 hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+set formatoptions=qrn1
+
 " Trying out the line numbering thing... never liked it, but that doesn't mean
 " I shouldn't give it another go :)
 set number
