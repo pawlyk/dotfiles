@@ -89,3 +89,5 @@
     autocrlf = input
 
 
+[push]
+	default = simple
