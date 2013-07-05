@@ -51,7 +51,7 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * undotree https://github.com/mbbill/undotree
 * editorconfig-vim https://github/editorconfig/editorconfig-vim
 * vim-gitgutter https://github.com/airblade/vim-gitgutter
-* Rainbow-parentheses-improved-and2 https://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2
+* Rainbow-parentheses-improved https://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2
 * nerdcommenter https://github.com/scrooloose/nerdcommenter
 * vim-fugitive'https://github.com/tpope/vim-fugitive
 * ack https://github.com/mileszs/ack.vim
