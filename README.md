@@ -10,12 +10,17 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 ## Installation
 
 1. Install requarements
-    - Install ack `sudo apt-get install ack-grep`
-    - Install ctags `sudo apt-get install ctags`
-    - Install custom Menlo font for Powerline from https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-2. Install Vundle `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-3. Clone repository `git clone https://github.com/pawlyk/dotfiles.git`
-4. 
+    - install ack `sudo apt-get install ack-grep`;
+    - install ctags `sudo apt-get install ctags`;
+    - install custom Menlo font for Powerline from `fonts` directory;
+2. Backup your dot files.
+3. Clone repository `git clone https://github.com/pawlyk/dotfiles.git ~/`.
+4. Install Vundle `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`.
+5. Run vim and execute command `:BundleInstall` in vim.
+6. Install tmux-powerline `git clone git://github.com/erikw/tmux-powerline.git ~/.tmux/tmux-powerline/`.
+7. Edit file `~/.tmux/tmux-powerline/themes/default.sh` to customize look and feel.
+8. Clone necessary plugins from zsh from https://github.com/zsh-users/ and add them to `.zshrc` (line 373).
+9. Enjoy.
 
 
 ## Screenshots
@@ -27,10 +32,8 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 
 ## Used plugins
 
-### Zsh 
-* zsh-completiions https://github.com/zsh-users/zsh-completions
-* zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search
-* zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+### Tmux
+* tmux-powerline https://github.com/erikw/tmux-powerline
 
 ### Vim 
 * Vundle https://github.com/gmarik/vundle
@@ -84,4 +87,7 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * vim-less https://github.com/groenewege/vim-less
 * xoria256 https://github.com/vim-scripts/xoria256.vim
 
-
+### Zsh 
+* zsh-completions https://github.com/zsh-users/zsh-completions
+* zsh-history-substring-search https://github.com/zsh-users/zsh-history-substring-search
+* zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting

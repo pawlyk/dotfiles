@@ -370,7 +370,7 @@ if [ ! -d "${TMP}" ]; then mkdir "${TMP}"; fi
 # Aliases
 source ${ZDOTDIR}/zsh_aliases
 
-# syntax highlighting
+# Syntax highlighting
 source ${ZDOTDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # History  search
