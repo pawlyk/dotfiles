@@ -1,11 +1,14 @@
 "---------------------------------------------------------------------------
 " Python Mode Settings
 "---------------------------------------------------------------------------
+" Load the whole plugin
+let g:pymode = 1
+
 " Load show documentation plugin
 let g:pymode_doc = 1
 
 " Key for show python documentation
-"let g:pymode_doc_key = 'K'
+let g:pymode_doc_key = 'K'
 
 " Load run code plugin
 let g:pymode_run = 1
@@ -79,9 +82,9 @@ let g:pymode_rope_enable_autoimport = 1
 
 "let g:pymode_rope_codeassist_maxfixes = 10
 
-"let g:pymode_rope_sorted_completions = 1
+let g:pymode_rope_sorted_completions = 1
 
-"let g:pymode_rope_extended_complete = 1
+let g:pymode_rope_extended_complete = 1
 
 "let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
 
@@ -91,16 +94,16 @@ let g:pymode_rope_enable_autoimport = 1
 
 "let g:pymode_rope_local_prefix = "<C-c>r"
 
-"let g:pymode_rope_vim_completion = 1
+let g:pymode_rope_vim_completion = 0
 
 "let g:pymode_rope_guess_project = 1
 
 "let g:pymode_rope_goto_def_newwin = ""
 
-"let g:pymode_rope_always_show_complete_menu = 0
+let g:pymode_rope_always_show_complete_menu = 0
 
 " Enable python folding
-let g:pymode_folding = 0
+let g:pymode_folding = 1
 
 " Enable python objects and motion
 let g:pymode_motion = 1

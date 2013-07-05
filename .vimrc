@@ -65,7 +65,7 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'vcscommand.vim'
 " Language Additions
 " Python
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 Bundle 'rainerborene/vim-pony'
 Bundle 'vim-scripts/pydoc.vim'
 "Bundle 'vim-scripts/vim-flake8'
@@ -139,7 +139,7 @@ set ruler
 " highlighting special symbols
 "set listchars=eol:␤,tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
 set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×,eol:¬
-set list
+"set list
 
 " backups
 set nobackup
@@ -203,13 +203,19 @@ set mousehide
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Set the textwidth to be 80 chars
-set textwidth=80
-set colorcolumn=80
+set wrap 
 set linebreak
+set breakat=\ |@-+;:,./?^I
+set textwidth=80
+set wrapmargin=0
+set colorcolumn=80
+set columns=86
+"match ErrorMsg '\%>80v.\+'
 set listchars+=precedes:<,extends:>
-set wrap linebreak textwidth=0
-hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-set formatoptions=qrn1
+"set wrap
+"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+"set formatoptions=qrn1
+set formatoptions=cqrnt1
 
 " Trying out the line numbering thing... never liked it, but that doesn't mean
 " I shouldn't give it another go :)
