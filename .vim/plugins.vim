@@ -180,6 +180,8 @@ let g:ctrlp_map = '<c-p>'
             "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.obj$\|\.swo$\|\.swp$\|\.pyc$\|\.pyo$'
             "\ }
 "let g:ctrlp_user_command = 'find %s -type f'
+" enable ctrlp-cmatcher
+let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
 
 "---------------------------------------------------------------------------
 " Fugitive Settings
