@@ -45,14 +45,11 @@ Bundle 'mileszs/ack.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-"Bundle 'ervandew/supertab'
-"Bundle 'ervandew/snipmate.vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'Shougo/neocomplcache'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-surround'
 " Snippets
-"Bundle 'garbas/vim-snipmate'
 Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -100,7 +97,6 @@ Bundle 'sql.vim'
 Bundle 'SQLComplete.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
-"Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on " Automatically detect file types. (must turn on after Vundle)
 
