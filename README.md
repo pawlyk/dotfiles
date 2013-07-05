@@ -38,6 +38,7 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 ### Vim 
 * Vundle https://github.com/gmarik/vundle
 * ctrlp https://github.com/kien/ctrlp.vim
+* ctrlp-cmatcher https://github.com/JazzCore/ctrlp-cmatcher
 * vim-indent-guides https://github.com/mutewinter/vim-indent-guides
 * vim-powerline https://github.com/Lokaltog/vim-powerline
 * nerdtree https://github.com/scrooloose/nerdtree
@@ -48,6 +49,9 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * colorv https://github.com/Rykka/colorv.vim
 * vim-todo https://github.com/codegram/vim-todo
 * undotree https://github.com/mbbill/undotree
+* editorconfig-vim https://github/editorconfig/editorconfig-vim
+* vim-gitgutter https://github.com/airblade/vim-gitgutter
+* Rainbow-parentheses-improved-and2 https://github.com/vim-scripts/Rainbow-Parentheses-Improved-and2
 * nerdcommenter https://github.com/scrooloose/nerdcommenter
 * vim-fugitive'https://github.com/tpope/vim-fugitive
 * ack https://github.com/mileszs/ack.vim
@@ -55,9 +59,11 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * delimitMate https://github.com/Raimondi/delimitMate
 * syntastic https://github.com/scrooloose/syntastic
 * MatchTag https://github.com/gregsexton/MatchTag
+* vim-multiple-cursors https://github.com/terryma/vim-multiple-cursors
+* vim-surround https://github.com/tpope/vim-surround
 * neocomplcache https://github.com/Shougo/neocomplcache
 * neosnippet https://github.com/Shougo/neosnippet
-* snipmate-snippets https://github.com/honza/snipmate-snippets
+* vim-snippets https://honza/vim-snippets
 * vim-addon-mw-utils https://github.com/MarcWeber/vim-addon-mw-utils
 * matchit http://www.vim.org/scripts/script.php?script_id=39
 * tlib_vim https://github.com/tomtom/tlib_vim
@@ -69,11 +75,13 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * pythoncomplete https://github.com/mjbrownie/pythoncomplete.vim
 * VimPdb https://github.com/ethanrublee/VimPdb
 * vim-ruby https://github.com/vim-ruby/vim-ruby
+* jedi-vim https://github.com//davidhalter/jedi-vim
 * vim-haml https://github.com/tpope/vim-haml
 * vim-rails https://github.com/tpope/vim-rails
 * vim-rake https://github.com/tpope/vim-rake
 * vim-bundler https://github.com/tpope/vim-bundler
 * vim-rvm https://github.com/tpope/vim-rvm
+* vim-padrino https://github.com/spllr/vim-padrino
 * vim-javascript https://github.com/pangloss/vim-javascript
 * vim-coffee-script https://github.com/kchmck/vim-coffee-script
 * vim-json https://github.com/leshill/vim-json
@@ -85,6 +93,10 @@ This repo contains my personal settings files for vim, zsh, git, tmux.
 * vim-tmux https://github.com/acustodioo/vim-tmux
 * vim-markdown https://github.com/hallison/vim-markdown
 * vim-less https://github.com/groenewege/vim-less
+* xhtml http://www.vim.org/scripts/script.php?script_id=1236 
+* mustache https://github.com/juvenn/mustache.vim
+* sql  http://www.vim.org/scripts/script.php?script_id=498
+* SQLCompleteBundle http://www.vim.org/scripts/script.php?script_id=1572
 * xoria256 https://github.com/vim-scripts/xoria256.vim
 
 ### Zsh 
