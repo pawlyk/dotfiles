@@ -21,7 +21,7 @@ let g:pymode_lint = 1
 
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
-let g:pymode_lint_checker = "pyflakes"
+let g:pymode_lint_checker = "pyflakes,pep8"
 
 " Skip errors and warnings
 " E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors startswith E2) and etc
@@ -192,3 +192,9 @@ let g:jedi#related_names_command = "<leader>n"
 
 " If you want to change the default autocompletion command:
 let g:jedi#autocompletion_command = "<C-Space>" 
+
+"---------------------------------------------------------------------------
+" Jedi Settings
+"---------------------------------------------------------------------------
+nnoremap <F8> :TogglePudbBreakPoint<CR>
+inoremap <F8> <ESC>:TogglePudbBreakPoint<CR>a

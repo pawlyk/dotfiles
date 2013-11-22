@@ -109,7 +109,9 @@ smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" 
 "---------------------------------------------------------------------------
 "imap <C-F> <C-X><C-O>
 vmap <C-C> "+yi
+imap <C-C> "+yi
 imap <C-V> <esc>"+gPi
+vmap <C-V> <esc>"+gPi
 
 "---------------------------------------------------------------------------
 " VimPdb Settings

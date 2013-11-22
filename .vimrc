@@ -70,6 +70,7 @@ Bundle 'vim-scripts/pydoc.vim'
 Bundle 'mjbrownie/pythoncomplete.vim'
 "Bundle 'ethanrublee/VimPdb'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'KangOl/vim-pudb'
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
