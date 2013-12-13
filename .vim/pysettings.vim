@@ -173,13 +173,13 @@ let g:pymode_syntax_slow_sync = 0
 " Jedi Settings
 "---------------------------------------------------------------------------
 " The goto is by default on <leader g>
-let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>g"
 
 " get_definition is by default on <leader d>
-let g:jedi#get_definition_command = "<leader>d"
+let g:jedi#goto_definition_command = "<leader>d"
 
 " Showing the pydoc is by default on K
-let g:jedi#pydoc = "K"
+let g:jedi#documentation_command = "K"
 
 " Jedi selects the first line of the completion menu: for a better typing-flow and usually saves one keypress.
 let g:jedi#popup_select_first = 0
@@ -188,10 +188,10 @@ let g:jedi#popup_select_first = 0
 let g:jedi#rename_command = "<leader>r"
 
 " And you can list all names that are related (have the same origin)
-let g:jedi#related_names_command = "<leader>n"
+let g:jedi#usages_command = "<leader>n"
 
 " If you want to change the default autocompletion command:
-let g:jedi#autocompletion_command = "<C-Space>" 
+let g:jedi#completions_command = "<C-Space>" 
 
 "---------------------------------------------------------------------------
 " Jedi Settings
