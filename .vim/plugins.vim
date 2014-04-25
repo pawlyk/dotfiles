@@ -107,10 +107,10 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_syntax_length = 2
 let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_max_list = 15
-let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_auto_completion_start_length = 2
 let g:neocomplcache_force_overwrite_completefunc = 1
 let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
 
@@ -174,7 +174,7 @@ let g:ctrlp_map = '<c-p>'
 ""let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.bzr$'
 ""let g:ctrlp_custom_ignore = '\.exe$\|\.so$\|\.dll$\|\.obj$'
 ""let g:ctrlp_custom_ignore = '\.swo$\|\.swp$\|\.pyc$\|\.pyo$'
-""let g:ctrlp_custom_ignore = 'some_bad_symbolic_links' 
+""let g:ctrlp_custom_ignore = 'some_bad_symbolic_links'
 "let g:ctrlp_custom_ignore = {
             "\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.bzr$',
             "\ 'file': '\.exe$\|\.so$\|\.dll$\|\.obj$\|\.swo$\|\.swp$\|\.pyc$\|\.pyo$'
@@ -206,7 +206,7 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$', '\.idea',
                    \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
                    \ '\.intermediate\.manifest$', '^mt.dep$',
-                   \ '\.pyc', '\.pyo', '\~$', '\.swo$', '\.swp$', 
+                   \ '\.pyc', '\.pyo', '\~$', '\.swo$', '\.swp$',
                    \ '\.git$', '\.hg$', '\.svn$', '\.bzr$']
 
 "---------------------------------------------------------------------------
@@ -228,3 +228,12 @@ let g:gitgutter_highlights = 1
 "---------------------------------------------------------------------------
 let g:rainbow_active=1
 let g:rainbow_operators=1
+
+"---------------------------------------------------------------------------
+" Rainbow Parentheses Improved Plugin Settings
+"---------------------------------------------------------------------------
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4

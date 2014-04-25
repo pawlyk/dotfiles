@@ -2,7 +2,7 @@
 " $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " $ :BundleInstall
 " $ sudo apt-get install ack-grep
-" install Custom Menlo font for Powerline from https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts 
+" install Custom Menlo font for Powerline from https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
 "---------------------------------------------------------------------------
 " Vundle
 "---------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
 " UI Additions
-Bundle 'mutewinter/vim-indent-guides'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
@@ -53,12 +53,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'garbas/vim-snipmate'
 " Additional easement
 " MatchIt
 Bundle 'matchit.zip'
 " Libraries
 Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
 " VCS
 Bundle 'vcscommand.vim'
 " Language Additions
@@ -70,7 +70,6 @@ Bundle 'vim-scripts/pydoc.vim'
 Bundle 'mjbrownie/pythoncomplete.vim'
 "Bundle 'ethanrublee/VimPdb'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'KangOl/vim-pudb'
 " Ruby
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
@@ -85,6 +84,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'leshill/vim-json'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'nono/vim-handlebars'
+" Fortran
+Bundle 'caglartoklu/fortran_line_length.vim'
+Bundle 'vim-scripts/fortran.vim'
 " Other Languages
 Bundle 'mutewinter/nginx.vim'
 Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
@@ -177,7 +179,7 @@ set vb
 " Allow backspacing over indent, eol, and the start of an insert
 set backspace=2
 
-" Make sure that unsaved buffers that are to be put in the background are 
+" Make sure that unsaved buffers that are to be put in the background are
 " allowed to go in there (ie. the "must save first" error doesn't come up)
 set hidden
 
@@ -201,7 +203,7 @@ set mousehide
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Set the textwidth to be 80 chars
-set wrap 
+set wrap
 set linebreak
 set breakat=\ |@-+;:,./?^I
 set textwidth=80
