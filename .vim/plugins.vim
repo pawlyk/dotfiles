@@ -43,6 +43,33 @@ let g:tagbar_autofocus = 1
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
 let g:tagbar_autoshowtag = 1
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
 
 "---------------------------------------------------------------------------
 " MRU Settings
@@ -103,6 +130,7 @@ let MRU_Max_Submenu_Entries = 15
 "" Show clang errors in the quickfix window
 "let g:clang_complete_copen = 1
 
+"let g:neocomplcache_disable_auto_complete = 1
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -112,7 +140,8 @@ let g:neocomplcache_enable_auto_delimiter = 1
 let g:neocomplcache_max_list = 15
 let g:neocomplcache_auto_completion_start_length = 2
 let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
+"let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
+let g:neocomplcache_snippets_dir='~/.vim/bundle/neosnippet-snippets/neosnippets'
 
 " AutoComplPop like behavior.
 let g:neocomplcache_enable_auto_select = 0
@@ -130,6 +159,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType sql set omnifunc=sqlcomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType cpp set omnifunc=cppcomplete#CompleteCPP
+autocmd FileType fortran set omnifunc=fortrancomplete#Complete
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
@@ -230,10 +263,15 @@ let g:rainbow_active=1
 let g:rainbow_operators=1
 
 "---------------------------------------------------------------------------
-" Rainbow Parentheses Improved Plugin Settings
+" indent guides plugin settings
 "---------------------------------------------------------------------------
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgray ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=dimgray ctermbg=237
+
+"---------------------------------------------------------------------------
+" emmet plugin settings
+"---------------------------------------------------------------------------
+"let g:user_emmet_leader_key = '<leader>e'
