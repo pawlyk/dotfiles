@@ -1,6 +1,6 @@
 [user]
     name = Paul Stadnikov
-    email = paul.stadnikov@gmail.com
+    email = p.stadnikov@fix-digital.com
 
 [color]
     ui = auto
@@ -57,7 +57,7 @@
     bl = "blame -b -w"
     cia = "commit --amend"
     pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
-; aliases for git extras https://github.com/visionmedia/git-extras
+    ; aliases for git extras https://github.com/visionmedia/git-extras
     extras = extras
     squash = squash
     summary = summary
@@ -96,4 +96,4 @@
     autocrlf = input
     excludesfile = ~/.gitexcludes
 [push]
-    default = simple
+	default = matching
