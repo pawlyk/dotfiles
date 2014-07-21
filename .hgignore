@@ -1,0 +1,14 @@
+syntax: glob
+
+.idea/
+
+*.swp
+*.py.swp
+
+*.py[cod]
+
+*~
+*.bk
+
+*.log
+*.lg

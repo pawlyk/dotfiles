@@ -1,32 +1,18 @@
 [user]
     name = Paul Stadnikov
-    email = p.stadnikov@fix-digital.com
+    email = paul.stadnikov@gmail.com
 
-[color]
-    ui = auto
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
+[core]
+    editor = vim -f
+    pager = cat
+    autocrlf = input
+    excludesfile = ~/.gitexcludes
 
-[color "branch"]
-    current = green bold
-    local = green
-    remote = red bold
+[merge]
+    log = true
 
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-
-[color "status"]
-    added = green bold
-    changed = yellow bold
-    untracked = red
-
-[color "sh"]
-    branch = yellow
+[push]
+    default = matching
 
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -44,6 +30,10 @@
 
     edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+    tags = tag -l
+    branches = branch -l
+    remotes = remote -v
 
     aa = add .
     st = status -sb
@@ -88,12 +78,28 @@
     promote = promote
     local-commits = local-commits
 
-[merge]
-    log = true
+[color]
+    ui = auto
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
 
-[core]
-    editor = gvim -f
-    autocrlf = input
-    excludesfile = ~/.gitexcludes
-[push]
-	default = matching
+[color "branch"]
+    current = green bold
+    local = green
+    remote = red bold
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green bold
+    changed = yellow bold
+    untracked = red
+
+[color "sh"]
+    branch = yellow
