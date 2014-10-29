@@ -228,18 +228,9 @@ unset git_dirty
 fi
 }
 
-precmd() {
 # Set terminal title.
+precmd() {
 termtitle precmd
-
-if [ "${git_pwd_is_worktree}" = 'true' ]; then
-git_branch
-git_dirty
-
-git_prompt=" %F{blue}[%F{253}${git_branch}${git_dirty}%F{blue}]"
-else
-unset git_prompt
-fi
 }
 
 preexec() {
@@ -248,8 +239,52 @@ termtitle preexec "${(V)1}"
 }
 
 chpwd() {
-git_check_if_worktree
+print -Pn "\e]0;%n@%m: %~\a" 
 }
+
+
+### Shows state of the Versioning Control System (e.g. Git, Subversion, Mercurial
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
+zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{red}:%f%F{yellow}%r%f'
+zstyle ':vcs_info:*' enable git hg svn
+zstyle ':vcs_info:*' formats '%F{blue}[%F{253}%b%c%u%f%F{blue}]%f'
+
+precmd () {
+    #if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+        #zstyle ':vcs_info:*' formats '%F{blue}[%F{253}%b%c%u%f%F{blue}]%f'
+    #} else {
+        #zstyle ':vcs_info:*' formats '%F{blue}[%F{253}%b%c%u%f%F{red}●%f%F{blue}]%f'
+    #}
+    vcs_info
+}
+
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '[±]' && return
+    hg root >/dev/null 2>/dev/null && echo '[☿]' && return
+    svn info >/dev/null 2>/dev/null && echo '[⚡]' && return
+    echo ''
+}
+
+bindkey -v      # vi mode
+vim_ins_mode="%{$fg[blue]%}[i]%{$reset_color%}"
+vim_cmd_mode="%{$fg[yellow]%}[c]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
 
 # Are we running under grsecurity's RBAC?
 rbac_auth() {
@@ -315,14 +350,26 @@ fi
 
 case $USER in
 root)
-PROMPT='[%{${fg[red]}%}%n%{${reset_color}%}@%{${fg[blue]}%}%m%{${reset_color}%}:%{${fg[cyan]}%}%1~%{${reset_color}%}]${git_prompt}%F{cyan} %# %b%f%k'
-RPROMPT='[%{${fg[cyan]}%}%*%{${reset_color}%}]'
+    # default prompt
+    PROMPT='[%{${fg[red]}%}%n%{${reset_color}%}@%{${fg[blue]}%}%m%{${reset_color}%}:%{${fg[cyan]}%}%1~%{${reset_color}%}]$(prompt_char)%F{blue}%F{253}${vcs_info_msg_0_}%F{cyan} %# %b%f%k'
+    # right prompt
+    RPROMPT='[%F{cyan}%D{%e.%m.%y %H:%M:%S}%f%{$reset_color%}]'
+    # prompt for loops
+    PROMPT2='{%_}  '
+    # prompt for selection
+    PROMPT3='{ … }  '
 
 ;;
 
 *)
-PROMPT='[%{${fg[green]}%}%n%{${reset_color}%}@%{${fg[blue]}%}%m%{${reset_color}%}:%{${fg[cyan]}%}%1~%{${reset_color}%}]${git_prompt}%F{cyan} %# %b%f%k'
-RPROMPT='[%{${fg[cyan]}%}%*%{${reset_color}%}]'
+    # default prompt
+    PROMPT='[%{${fg[green]}%}%n%{${reset_color}%}@%{${fg[blue]}%}%m%{${reset_color}%}:%{${fg[cyan]}%}%1~%{${reset_color}%}]${vim_mode}$(prompt_char)%F{blue}%F{253}${vcs_info_msg_0_}%F{cyan} %# %b%f%k'
+    # right prompt
+    RPROMPT='[%F{cyan}%D{%e.%m.%y %H:%M:%S}%f%{$reset_color%}]'
+    # prompt for loops
+    PROMPT2='{%_}  '
+    # prompt for selection
+    PROMPT3='{ … }  '
 
 ;;
 esac
@@ -418,10 +465,12 @@ if [ -f ~/.alert ]; then cat ~/.alert; fi
 
 # set PYTHONPATH 
 export PYTHONPATH='/usr/share/pyshared;/usr/share/pyshared-data;/usr/share/python;/usr/locale/lib/python2.7;/usr/lib/pymodules/python2.7;/usr/local/lib/python2.7/dist-packages;/usr/local/bin;'
+export WORKON_HOME=~/.venvs
+source /usr/local/bin/virtualenvwrapper.sh
 
-# Load RVM function
+# Lo adRVM function
 # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-#PATH=$PATH:$HOME/.rvm/scripts
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/scripts
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
