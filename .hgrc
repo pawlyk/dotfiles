@@ -1,10 +1,15 @@
 [ui]
-username = Paul Stadnoikov <paul.stadnikov@gmail.com>
+username = Paul Stadnikov <paul.stadnikov@gmail.com>
 editor = vim
 commitsubrepos = False
 ignore = ~/.hgignore
+merge = meld
+
+[defaults]
+log = -f
 
 [extensions]
+eol = 
 transplant =
 graphlog =
 record =
@@ -16,10 +21,13 @@ patchbomb =
 extdiff =
 color =
 parentrevspec =
+pager =
 schemes =
 progress =
 fetch =
 shelve =
+histedit = 
+hgk=
 
 [progress]
 delay = 1.0
@@ -31,6 +39,9 @@ unified = 5
 [extdiff]
 cmd.vd = vim
 opts.vd = -c 'set lines=70' -c 'set columns=240' '+next' '+execute "DirDiff" argv(0) argv(1)'
+
+[patch]
+eol = auto
 
 [merge-tools]
 splice.executable = vim
@@ -54,3 +65,45 @@ diff.deleted = red
 diff.inserted = green
 diff.changed = white
 diff.trailingwhitespace = white_background
+
+[alias]
+slog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.slog
+nlog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.nlog
+sglog = glog --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.sglog
+dlog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.dlog
+lg = dlog
+lp = log -p
+
+#up = "!(git add . && git stash && git pull --rebase >&2) | grep -v 'No local changes to save' && git stash pop"
+#in  = "!(git remote update -p; git log ..@{u})"
+#out = "log @{u}.."
+#addremove = "!(git add . && git ls-files --deleted | xargs --no-run-if-empty git rm)"
+
+#unstage = "reset HEAD --"
+#backup = "file=../`git describe`.tar && echo 'Creating `readlink -f $file`' && tar cf $file ."
+
+#edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+#add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
+remotes = path
+
+aa = add .
+ci = commit
+cia = "commit --amend"
+br = branch
+bra = branches
+brs = branches
+co = checkout
+df = diff
+pc = "push -b ."
+pr = "pull --rebase"
+pp = !echo 'PULL'; $HG pull; echo 'PUSH'; $HG push
+pup = !echo 'PULL'; $HG pull; echo 'UPDATE'; $HG update; echo 'PUSH'; $HG push
+pu = !echo 'PULL'; $HG pull; echo 'UPDATE'; $HG update
+
+
+[tortoisehg]
+ui.language = en
+vdiff = meld
+editor = gedit
+shell = zsh
