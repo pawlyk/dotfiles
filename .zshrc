@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="rkj-repos"
+ZSH_THEME="rkj-repos-mod"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,6 +55,7 @@ plugins=(colored-man colorize command-not-found compleat cp \
     docker git github gnu-utils go jira mercurial postgres redis-cli\
     gem ruby rvm \
     celery django fabric pip python virtualenv virtualenvwrapper \
+    virtualenv-prompt \
     debian systemd )
 
 source $ZSH/oh-my-zsh.sh
@@ -91,3 +92,8 @@ export PATH="/home/user/.rvm/gems/ruby-2.1.2/bin:/home/user/.rvm/gems/ruby-2.1.2
 
 # Fixes 
 echo DEBIAN_PREVENT_KEYBOARD_CHANGES=yes>>~/.zshenv
+
+export WORKON_HOME='~/.venvs'
+source /usr/local/bin/virtualenvwrapper.sh
+
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
