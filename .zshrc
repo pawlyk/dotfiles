@@ -1,7 +1,3 @@
-# Set locale to en_GB, need to work some plugins
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -52,7 +48,7 @@ ZSH_THEME="rkj-repos-mod"
 plugins=(colored-man colorize command-not-found compleat cp \
     dircycle extract history history-substring-search rsync safe-paste \
     tmux tmuxinator vundle web-search \
-    docker git github gnu-utils go jira mercurial postgres redis-cli\
+    docker git github gnu-utils go mercurial postgres redis-cli\
     gem ruby rvm \
     celery django fabric pip python virtualenv virtualenvwrapper \
     virtualenv-prompt \

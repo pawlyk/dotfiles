@@ -27,8 +27,15 @@ function mygit() {
 
 function retcode() {}
 
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '[±]' && return
+    hg root >/dev/null 2>/dev/null && echo '[☿]' && return
+    svn info >/dev/null 2>/dev/null && echo '[⚡]' && return
+    echo ''
+}
+
 # alternate prompt with git & hg
 PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%Y-%m-%d %I:%M:%S"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}
-%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B] $(virtualenv_prompt_info) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
+%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B] $(virtualenv_prompt_info)$(prompt_char) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
 PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
 
