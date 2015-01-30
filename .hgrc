@@ -4,6 +4,7 @@ editor = vim
 commitsubrepos = False
 ignore = ~/.hgignore
 merge = meld
+#merge = kdiff3
 
 [defaults]
 log = -f
@@ -28,6 +29,7 @@ fetch =
 shelve =
 histedit = 
 hgk=
+prompt = ~/.utils/hg-prompt/prompt.py
 
 [progress]
 delay = 1.0
@@ -71,6 +73,8 @@ slog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.slog
 nlog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.nlog
 sglog = glog --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.sglog
 dlog = log --style=/home/user/.utils/mercurial-cli-templates/map-cmdline.dlog
+sg20 = sglog -l20 
+sg20v = sg20 -v
 lg = dlog
 lp = log -p
 

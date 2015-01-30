@@ -1,5 +1,20 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export TERM=xterm-256color
+
+export EDITOR=/usr/bin/vim
+
+# set vi mode for zsh
+bindkey -v
+export KEYTIMEOUT=1
+
+# fix to work Home/End keys in tmux
+if [[ -n "$TMUX" ]]; then
+    bindkey "\eOH" up-line-or-history
+    bindkey "\eOF" down-line-or-history
+    bindkey "\e[1~" beginning-of-line
+    bindkey "\e[4~" end-of-line
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -47,6 +62,7 @@ ZSH_THEME="rkj-repos-mod"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(colored-man colorize command-not-found compleat cp \
     dircycle extract history history-substring-search rsync safe-paste \
+    #tmux tmuxinator vi-mode vundle web-search \
     tmux tmuxinator vundle web-search \
     docker git github gnu-utils go mercurial postgres redis-cli\
     gem ruby rvm \
