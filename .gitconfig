@@ -1,5 +1,5 @@
 [user]
-    name = Paul Stadnikov
+	name = Paul Stadnikov\n
     email = paul.stadnikov@gmail.com
 
 [core]
@@ -16,6 +16,7 @@
 
 [alias]
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lga = "!git lg --all"
     who = "shortlog -s --"
     lp = log -p
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -40,7 +41,7 @@
     ci = commit
     br = branch
     bra = branch -a
-    co = checkout
+    co = "!git stash; git stash apply; git checkout \"$*\""
     df = diff
     chp =  cherry-pick
     pr = "pull --rebase"

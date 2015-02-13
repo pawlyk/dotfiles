@@ -102,6 +102,8 @@ export PATH="/home/user/.rvm/gems/ruby-2.1.2/bin:/home/user/.rvm/gems/ruby-2.1.2
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.utils/aliases.zsh
+
 # Fixes 
 echo DEBIAN_PREVENT_KEYBOARD_CHANGES=yes>>~/.zshenv
 
