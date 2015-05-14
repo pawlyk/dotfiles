@@ -211,11 +211,13 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 set wrap
 set linebreak
 set breakat=\ |@-+;:,./?^I
-set textwidth=80
+set textwidth=79
 set wrapmargin=0
 set colorcolumn=80
 set columns=86
 "match ErrorMsg '\%>80v.\+'
+au BufWinEnter * let w:m1=matchadd('Search', '\%<81v.\%>79v', -1)
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 set listchars+=precedes:<,extends:>
 "set wrap
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey

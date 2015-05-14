@@ -23,6 +23,7 @@ set shortmess+=I
 syntax enable
 set background=dark
 colorscheme xoria256 "Monokai "molokai "aldmeris "relaxedgreen
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 set guioptions+=at
 set guioptions-=r
 if has("gui_running")
