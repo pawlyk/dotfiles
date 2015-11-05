@@ -1,12 +1,12 @@
 [user]
-	name = Paul Stadnikov\n
+    name = Paul Stadnikov
     email = paul.stadnikov@gmail.com
 
 [core]
     editor = vim -f
     pager = cat
     autocrlf = input
-    excludesfile = ~/.gitexcludes
+	excludesfile = /Users/pavel/.gitexcludes
 
 [merge]
     log = true
@@ -23,11 +23,16 @@
 
     up = "!(git add . && git stash && git pull --rebase >&2) | grep -v 'No local changes to save' && git stash pop"
     in  = "!(git remote update -p; git log ..@{u})"
-    out = "log @{u}.."
-    addremove = "!(git add . && git ls-files --deleted | xargs --no-run-if-empty git rm)"
+    out = "log --branches --not --remotes --decorate --oneline"
+    out-verbose = "log @{u}.."
 
+    addremove = "!(git add . && git ls-files --deleted | xargs --no-run-if-empty git rm)"
     unstage = "reset HEAD --"
     backup = "file=../`git describe`.tar && echo 'Creating `readlink -f $file`' && tar cf $file ."
+
+    unstash = "stash apply"
+    shelve = "stash"
+    unshelve = "stash apply"
 
     edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
     add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
@@ -104,3 +109,13 @@
 
 [color "sh"]
     branch = yellow
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
