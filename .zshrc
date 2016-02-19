@@ -62,19 +62,21 @@ ZSH_THEME="rkj-repos-mod"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(colored-man colorize command-not-found compleat cp \
     dircycle extract history history-substring-search rsync safe-paste \
-    #tmux tmuxinator vi-mode vundle web-search \
-    tmux tmuxinator vundle web-search \
-    docker git github gnu-utils go mercurial postgres redis-cli\
+    tmux tmuxinator vundle web-search httpie \
+    docker git gitfast git-extras github gnu-utils mercurial \
+    postgres redis-cli\
     gem ruby rvm \
     celery django fabric pip python virtualenv virtualenvwrapper \
+    autopep8 pep8 \
     virtualenv-prompt \
-    debian systemd )
+    cabal golang \
+    debian systemd sudo )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/user/.rvm/gems/ruby-2.1.2/bin:/home/user/.rvm/gems/ruby-2.1.2@global/bin:/home/user/.rvm/rubies/ruby-2.1.2/bin:/home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/user/.rvm/bin:/home/user/.rvm/scripts"
+export PATH="$PATH:/home/pstadnik/.rvm/scripts/rvm:/home/pstadnik/.rvm/rubies/ruby-head/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -108,6 +110,10 @@ source ~/.utils/aliases.zsh
 echo DEBIAN_PREVENT_KEYBOARD_CHANGES=yes>>~/.zshenv
 
 export WORKON_HOME='~/.venvs'
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
