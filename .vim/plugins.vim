@@ -274,4 +274,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=dimgray ctermbg=237
 "---------------------------------------------------------------------------
 " emmet plugin settings
 "---------------------------------------------------------------------------
-"let g:user_emmet_leader_key = '<leader>e'
+let g:user_emmet_leader_key = '<leader>e'
+
+"---------------------------------------------------------------------------
+" Rust language plugin settings
+"---------------------------------------------------------------------------
+let g:rustfmt_autosave = 1
+

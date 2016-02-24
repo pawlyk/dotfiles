@@ -62,6 +62,7 @@ Bundle 'matchit.zip'
 Bundle 'tomtom/tlib_vim'
 " VCS
 Bundle 'vcscommand.vim'
+Bundle 'gregsexton/gitv'
 " Language Additions
 " Python
 "Bundle 'klen/python-mode'
@@ -92,6 +93,8 @@ Bundle 'vim-scripts/fortran.vim'
 " Go lang
 Bundle 'jstemmer/gotags'
 Bundle 'nsf/gocode'
+" Rust
+Bundle 'rust-lang/rust.vim'
 " Other Languages
 Bundle 'mutewinter/nginx.vim'
 Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
@@ -103,6 +106,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 Bundle 'sql.vim'
 Bundle 'SQLComplete.vim'
+Bundle 'ekalinin/Dockerfile.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
 
