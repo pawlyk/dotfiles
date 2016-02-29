@@ -13,8 +13,6 @@ alias -- -='cd -'
 alias _='sudo'
 alias please='sudo'
 
-#alias g='grep -in'
-
 # Show history
 if [ "$HIST_STAMPS" = "mm/dd/yyyy" ]
 then
@@ -49,6 +47,7 @@ alias 'tf=tail -f'
 alias 'grep=grep --colour=auto'
 alias 'fgrep=grep -F --color=auto'
 alias 'egrep=grep -E --colour=auto'
+#alias g='grep -in'
 alias 'ack=ack-grep'
 alias 'vnice=nice -n 20 ionice -c 3'
 alias 'get_iplayer=get_iplayer --nopurge'
@@ -111,45 +110,5 @@ alias 'dtmux=sh ~/.tmux/dtmux.sh'
 alias 'rtmux=sh ~/.tmux/rtmux.sh'
 alias 'ptmux=sh ~/.tmux/ptmux.sh'
 
-# rails
-alias 'rg=rails generate'
-alias 'rc=rails console'
-alias 'rs=rails server'
-alias 'rsd=rails server --debugger'
-alias 'rn=rails new'
-alias 'rdb=rails dbconsole'
-
-alias 'ra=rails application'
-alias 'rd=rails destroy'
-alias 'rb=rails benchmarker'
-alias 'rpr=rails profiler'
-alias 'rpl=rails plugin'
-alias 'rr=rails runner'
-
-alias 'rga=rails generate assets'
-alias 'rgc=rails generate controller'
-alias 'rgg=rails generate generator'
-alias 'rgh=rails generate helper'
-alias 'rgit=rails generate integration_test'
-alias 'rgml=rails generate mailer'
-alias 'rgmg=rails generate migration'
-alias 'rgm=rails generate model'
-alias 'rgo=rails generate observer'
-alias 'rgpt=rails generate performance_test'
-alias 'rgr=rails generate resource'
-alias 'rgs=rails generate scaffold'
-alias 'rgsc=rails generate scaffold_controller'
-alias 'rgsm=rails generate session_migration'
-alias 'rgt=rails generate task'
-alias 'rgca=rails generate coffee:assets'
-alias 'rgjq=rails generate jquery:assets'
-alias 'rgjs=rails generate js:assets'
-
-# rake
-alias 'rdm=rake db:migrate'
-alias 'rdr=rake db:rollback'
-
-# bundler
-alias 'be=bundle exec'
-alias 'bi=bundle install'
-alias 'bu=bundle update'
+# system
+alias 'sys_update=sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y'
