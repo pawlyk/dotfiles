@@ -1,12 +1,12 @@
 [user]
-    name = Paul Stadnikov
-    email = paul.stadnikov@gmail.com
+    name = Pavlo Stadnikov
+    email = psatdnik@softserveinc.com
 
 [core]
     editor = vim -f
     pager = cat
     autocrlf = input
-	excludesfile = /Users/pavel/.gitexcludes
+    excludesfile = ~/.gitexcludes
 
 [merge]
     log = true
@@ -46,6 +46,7 @@
     ci = commit
     br = branch
     bra = branch -a
+    brs = branch -a
     co = "!git stash; git stash apply; git checkout \"$*\""
     df = diff
     chp =  cherry-pick

@@ -85,6 +85,7 @@ alias 'mkdir=mkdir -p'
 alias 'cd..=cd ..'
 alias 'cd~=cd ~'
 alias 'sl=ls'
+alias 'gti=git'
 
 # Global aliases (expand whatever their position)
 #  e.g. find . E L
