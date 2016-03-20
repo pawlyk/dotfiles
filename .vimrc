@@ -38,6 +38,7 @@ Bundle 'mbbill/undotree'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'vim-scripts/Rainbow-Parentheses-Improved-and2'
+Bundle 'jeffkreeftmeijer/vim-numbertoggle'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'

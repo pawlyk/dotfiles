@@ -1,4 +1,4 @@
-"---------------------------------------------------------------------------
+"
 " NERD Tree Settings
 "---------------------------------------------------------------------------
 " Toggle the NERD Tree on an off with F1
@@ -118,24 +118,9 @@ vmap <C-V> <esc>"+gPi
 "---------------------------------------------------------------------------
 
 "---------------------------------------------------------------------------
-" Set keyboard shortscuts for switch betwen relative and absolute line numbers
+" Numbertoggle Plugin Settings
 "---------------------------------------------------------------------------
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-s> :call NumberToggle()<cr>
-
-au FocusLost * :set number
-au FocusLost * :wa
-au FocusGained * :set relativenumber
-
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+let g:NumberToggleTrigger="<Leader>n"
 
 "---------------------------------------------------------------------------
 " Useful keyboard shortscuts
