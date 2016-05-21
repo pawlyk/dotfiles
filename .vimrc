@@ -1,39 +1,39 @@
 " How to install
-" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" $ :BundleInstall
+" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" $ :PluginInstall
 " $ sudo apt-get install ack-grep
-" install Custom Menlo font for Powerline from https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+" install Custom Menlo font for Powerline from  
+" https://github.com/powerline/fonts
 "---------------------------------------------------------------------------
-" Vundle
+" Vundle Settings
 "---------------------------------------------------------------------------
 
 autocmd! BufWritePost .vimrc source %
 set nocompatible " be iMproved
 filetype off " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
-
+Plugin 'VundleVim/Vundle.vim'
 "---------------------------------------------------------------------------
 " Plugin Bundles
 "---------------------------------------------------------------------------
-
+" Interface
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Navigation
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
-" UI Additions
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
-Bundle 'c9s/bufexplorer'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'yegappan/mru'
+" UI Additions
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'c9s/bufexplorer'
 Bundle 'Rykka/colorv.vim'
-Bundle 'codegram/vim-todo'
+Bundle 'freitass/todo.txt-vim'
 Bundle 'mbbill/undotree'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'airblade/vim-gitgutter'
@@ -44,6 +44,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'mattn/gist-vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'gregsexton/MatchTag'
@@ -69,25 +70,23 @@ Bundle 'gregsexton/gitv'
 "Bundle 'klen/python-mode'
 Bundle 'rainerborene/vim-pony'
 Bundle 'vim-scripts/pydoc.vim'
-"Bundle 'vim-scripts/vim-flake8'
 Bundle 'mjbrownie/pythoncomplete.vim'
-"Bundle 'ethanrublee/VimPdb'
-Bundle 'davidhalter/jedi-vim'
+"Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 " Ruby
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rvm'
+"Bundle 'vim-ruby/vim-ruby'
+"Bundle 'tpope/vim-haml'
+"Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-rake'
+"Bundle 'tpope/vim-bundler'
+"Bundle 'tpope/vim-rvm'
 "Bundle 'spllr/vim-padrino'
 " JavaScript
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'leshill/vim-json'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'nono/vim-handlebars'
+"Bundle 'pangloss/vim-javascript'
+"Bundle 'kchmck/vim-coffee-script'
+"Bundle 'leshill/vim-json'
+"Bundle 'itspriddle/vim-jquery'
+"Bundle 'nono/vim-handlebars'
 " Fortran
 Bundle 'caglartoklu/fortran_line_length.vim'
 Bundle 'vim-scripts/fortran.vim'
@@ -98,28 +97,29 @@ Bundle 'nsf/gocode'
 Bundle 'rust-lang/rust.vim'
 " Other Languages
 Bundle 'mutewinter/nginx.vim'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
-Bundle 'ap/vim-css-color'
+"Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+"Bundle 'ap/vim-css-color'
 Bundle 'acustodioo/vim-tmux'
 Bundle 'hallison/vim-markdown'
 Bundle 'xhtml.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'juvenn/mustache.vim'
+"Bundle 'groenewege/vim-less'
+"Bundle 'juvenn/mustache.vim'
 Bundle 'sql.vim'
 Bundle 'SQLComplete.vim'
 Bundle 'ekalinin/Dockerfile.vim'
 " Color themes
 Bundle 'vim-scripts/xoria256.vim'
 
+call vundle#end()
 filetype plugin indent on " Automatically detect file types. (must turn on after Vundle)
-
-" Set leader to ,
-" Note: This line MUST come before any <leader> mappings
-let mapleader=","
 
 "---------------------------------------------------------------------------
 " Global Stuff
 "---------------------------------------------------------------------------
+" Set leader to ,
+" Note: This line MUST come before any <leader> mappings
+let mapleader=","
+
 " Printing options
 set printoptions=header:0,duplex:long,paper:A4
 
@@ -147,7 +147,7 @@ set showcmd
 set showmatch
 set ruler
 " highlighting special symbols
-"set listchars=eol:␤,tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
+set listchars=eol:␤,tab:▹·,trail:·,extends:»,precedes:«,nbsp:×
 set listchars=tab:▹·,trail:·,extends:»,precedes:«,nbsp:×,eol:¬
 "set list
 
@@ -194,7 +194,9 @@ set backspace=2
 set hidden
 
 " tell VIM to always put a status line in, even if there is only one window
-set laststatus=2
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " Don't update the display while executing macros
 set lazyredraw
@@ -215,7 +217,7 @@ set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ve
 " Set the textwidth to be 80 chars
 set wrap
 set linebreak
-set breakat=\ |@-+;:,./?^I
+"set breakat=\ |@-+;:,./?^I
 set textwidth=79
 set wrapmargin=0
 set colorcolumn=80
@@ -247,14 +249,6 @@ set wildignore+=.*.sw*,__pycache__,*.pyc
 " set spellchacer
 set spelllang=en_us
 
-" Set the status line the way i like it
-set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
-
-" Highlight the current line and column
-" Don't do this - It makes window redraws painfully slow
-" set nocursorline
-" set nocursorcolumn
-
 " Mouse scrolling
 set mouse=a
 set mousemodel=popup
@@ -268,12 +262,6 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " Spell-checker
 set wildmenu
 "set wcm=<Tab>
-
-" Spell check:
-" menu SetSpell.off :set nospell<CR>
-" menu SetSpell.en  :set spl=en spell<CR>
-" menu SetSpell.ua  :set spl=ua spell<CR>
-" menu SetSpell.ru  :set spl=ru spell<CR>
 
 " Slow Vim
 set notimeout

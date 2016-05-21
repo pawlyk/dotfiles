@@ -1,6 +1,6 @@
 [user]
-    name = Pavlo Stadnikov
-    email = psatdnik@softserveinc.com
+    name = Paul Stadnikov
+    email = paul.stadnikov@gmail.com
 
 [core]
     editor = vim -f
@@ -111,12 +111,27 @@
 [color "sh"]
     branch = yellow
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+    trustExitCode = true
+
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    trustExitCode = true
+    cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
+[merge]
+    tool = meld
+[mergetool]
+    prompt = false
+[mergetool "meld"]
+    trustExitCode = true
+    cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output \"$PWD/$MERGED\"
