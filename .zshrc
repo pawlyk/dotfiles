@@ -63,7 +63,8 @@ ZSH_THEME="rkj-repos-mod"
 plugins=(colored-man colorize command-not-found compleat cp \
     dircycle extract history history-substring-search rsync safe-paste \
     tmux tmuxinator vundle web-search httpie \
-    docker git gitfast git-extras github gnu-utils mercurial \
+    docker git git-extras git-flow-completion git-flow  github \
+    gnu-utils mercurial \
     postgres redis-cli\
     gem ruby rvm \
     celery django fabric pip python virtualenv virtualenvwrapper \
@@ -76,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/home/pstadnik/.rvm/scripts/rvm:/home/pstadnik/.rvm/rubies/ruby-head/bin"
+export PATH="$PATH:/home/pstadnikov/.rvm/scripts/rvm:/home/pstadnikov/.rvm/rubies/ruby-head/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
