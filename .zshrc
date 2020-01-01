@@ -4,6 +4,9 @@ export TERM=xterm-256color
 
 export EDITOR=/usr/bin/vim
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # set vi mode for zsh
 bindkey -v
 export KEYTIMEOUT=1
@@ -60,25 +63,30 @@ ZSH_THEME="rkj-repos-mod"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man colorize command-not-found compleat cp \
-    dircycle extract history history-substring-search rsync safe-paste \
-    tmux tmuxinator vundle web-search httpie \
-    docker git git-extras git-flow-completion git-flow  github \
-    gnu-utils mercurial \
-    postgres redis-cli\
-    gem ruby rvm \
-    celery django fabric pip python virtualenv virtualenvwrapper \
-    autopep8 pep8 \
-    virtualenv-prompt \
-    cabal golang \
-    debian systemd sudo )
+plugins=(
+    go git-extras
+    #colored-man colorize command-not-found compleat cp \
+    #dircycle extract history history-substring-search rsync safe-paste \
+    #tmux tmuxinator vundle web-search httpie \
+    #docker git git-flow git-extras github gnu-utils mercurial \
+    #postgres redis-cli\
+    #gem ruby rvm \
+    #celery django fabric pip python 
+    #virtualenv virtualenvwrapper \
+    #autopep8 pep8 \
+    #virtualenv-prompt \
+    #cabal golang \
+    #debian systemd sudo 
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:/home/pstadnikov/.rvm/scripts/rvm:/home/pstadnikov/.rvm/rubies/ruby-head/bin"
+export PATH="$PATH:/home/pstadnik/.rvm/scripts/rvm:/home/pstadnik/.rvm/rubies/ruby-head/bin"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="$MANPATH:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -111,10 +119,22 @@ source ~/.utils/aliases.zsh
 echo DEBIAN_PREVENT_KEYBOARD_CHANGES=yes>>~/.zshenv
 
 export WORKON_HOME='~/.venvs'
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 source /usr/local/bin/virtualenvwrapper.sh
 
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/sbin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+export GOPATH="$HOME/devel/go"
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
