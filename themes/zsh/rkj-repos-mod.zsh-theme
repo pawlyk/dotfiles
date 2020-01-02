@@ -12,49 +12,51 @@ patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset
 
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[cyan]%}+"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}✱"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✗"
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}➦"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}✂"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}✈"
+ZSH_THEME_GIT_PROMPT_ADDED=" %{$fg[cyan]%}+"
+ZSH_THEME_GIT_PROMPT_MODIFIED=" %{$fg[yellow]%}✱"
+ZSH_THEME_GIT_PROMPT_DELETED=" %{$fg[red]%}✗"
+ZSH_THEME_GIT_PROMPT_RENAMED=" %{$fg[blue]%}➦"
+ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[magenta]%}✂"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[grey]%}✈"
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$fg[grey]%}"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
 
 function mygit() {
-  ref1=$(git symbolic-ref HEAD 2> /dev/null) || return
-  ref2=$(git rev-parse HEAD | head -c 6) || return
-  ref="$ref1 %{$fg[grey]%}$ref2"
-  #ref=$(git symbolic-ref HEAD 2> /dev/null) $(git rev-parse HEAD | head -c 6) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$( git_prompt_status )%{$reset_color%}$ZSH_THEME_GIT_PROMPT_SUFFIX "
+  if [[ "$(git config --get oh-my-zsh.hide-status)" != "1" ]]; then
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(git_prompt_short_sha)$(git_prompt_status)%{$fg_bold[blue]%}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  fi
 }
 
 function retcode() {}
 
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo ' [±]' && return
+    hg root >/dev/null 2>/dev/null && echo ' [☿]' && return
+    svn info >/dev/null 2>/dev/null && echo ' [⚡]' && return
+    echo ''
+}
+
 function virtualenv_prompt_info() {
     if [ -n "$VIRTUAL_ENV" ]; then
         local name=$(basename $VIRTUAL_ENV)
-        echo "($name) "
+        echo " [$name]"
     fi
-}
-
-function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '[±]' && return
-    hg root >/dev/null 2>/dev/null && echo '[☿]' && return
-    svn info >/dev/null 2>/dev/null && echo '[⚡]' && return
-    echo ''
 }
 
 case $USER in
 root)
 # alternate prompt with git & hg
 PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;31m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%Y-%m-%d %H:%M:%S"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}
-%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B] $(virtualenv_prompt_info)$(prompt_char) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
+%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B]$(virtualenv_prompt_info)$(prompt_char) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
 PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
 ;;
 
 *)
 # alternate prompt with git & hg
 PROMPT=$'%{\e[0;34m%}%B┌─[%b%{\e[0m%}%{\e[1;32m%}%n%{\e[1;30m%}@%{\e[0m%}%{\e[0;36m%}%m%{\e[0;34m%}%B]%b%{\e[0m%} - %b%{\e[0;34m%}%B[%b%{\e[1;37m%}%~%{\e[0;34m%}%B]%b%{\e[0m%} - %{\e[0;34m%}%B[%b%{\e[0;33m%}'%D{"%Y-%m-%d %H:%M:%S"}%b$'%{\e[0;34m%}%B]%b%{\e[0m%}
-%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B] $(virtualenv_prompt_info)$(prompt_char) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
+%{\e[0;34m%}%B└─%B[%{\e[1;35m%}%?$(retcode)%{\e[0;34m%}%B]$(virtualenv_prompt_info)$(prompt_char) <$(mygit)$(hg_prompt_info)>%{\e[0m%}%b '
 PS2=$' \e[0;34m%}%B>%{\e[0m%}%b '
 ;;
 esac
