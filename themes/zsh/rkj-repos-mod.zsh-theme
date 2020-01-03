@@ -10,16 +10,16 @@ function hg_prompt_info {
 patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset_color%})|pre_unapplied(%{$fg_bold[black]%})|post_unapplied(%{$reset_color%})>>" 2>/dev/null
 }
 
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_ADDED=" %{$fg[cyan]%}+"
-ZSH_THEME_GIT_PROMPT_MODIFIED=" %{$fg[yellow]%}✱"
-ZSH_THEME_GIT_PROMPT_DELETED=" %{$fg[red]%}✗"
-ZSH_THEME_GIT_PROMPT_RENAMED=" %{$fg[blue]%}➦"
-ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[magenta]%}✂"
-ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[grey]%}✈"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}✔%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[cyan]%}+"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}✱"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✗"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}➦"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}✂"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}✈"
 ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$fg[grey]%}"
-ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%} "
 
 function mygit() {
   if [[ "$(git config --get oh-my-zsh.hide-status)" != "1" ]]; then
