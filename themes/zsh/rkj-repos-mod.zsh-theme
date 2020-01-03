@@ -18,8 +18,10 @@ ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✗"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}➦"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%}✂"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[grey]%}✈"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[cyan]%}↑%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[magenta]%}↓%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$fg[grey]%}"
-ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}"
 
 function mygit() {
   if [[ "$(git config --get oh-my-zsh.hide-status)" != "1" ]]; then
