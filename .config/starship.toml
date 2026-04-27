@@ -1,0 +1,48 @@
+# Disable empty line between commands
+add_newline = false
+
+# General format (what to display)
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$aws\
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+style = "bold blue"
+truncate_to_repo = false # Disable truncation to the git repository root
+truncation_length = 0    # 0 means "never shorten the path"
+read_only = " 🔒"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead}⇣${behind}"
+behind = "⇣${count}"
+
+[python]
+symbol = " "
+style = "bold yellow"
+format = '[$symbol$pyenv_prefix($version )(\($virtualenv\) )]($style)'
+
+[aws]
+symbol = " "
+style = "bold #FF9900"
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+[cmd_duration]
+min_time = 2000 # Show execution time if the command takes longer than 2 seconds
+format = "[$duration]($style) "
+style = "bold yellow"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
