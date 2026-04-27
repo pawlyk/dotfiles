@@ -1,140 +1,87 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-export TERM=xterm-256color
+# ============================================================================ #
+#                                HISTORY SETTINGS                              #
+# ============================================================================ #
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_IGNORE_DUPS     # Don't save duplicate commands in sequence
+setopt HIST_IGNORE_SPACE    # Don't save commands starting with a space
+setopt HIST_REDUCE_BLANKS   # Remove redundant blanks
+setopt SHARE_HISTORY        # Share history across tabs
 
-export EDITOR=/usr/bin/vim
+# ============================================================================ #
+#                                COMPLETION                                    #
+# ============================================================================ #
+# Add Homebrew paths for completions
+fpath=(/opt/homebrew/share/zsh/site-functions /opt/homebrew/share/zsh-completions $fpath)
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+autoload -Uz compinit
+compinit -C # -C speeds up startup by ignoring file security checks
 
-# set vi mode for zsh
-bindkey -v
-export KEYTIMEOUT=1
+# Completion menu styling (to allow arrow selection)
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Ignore case
 
-# fix to work Home/End keys in tmux
-if [[ -n "$TMUX" ]]; then
-    bindkey "\eOH" up-line-or-history
-    bindkey "\eOF" down-line-or-history
-    bindkey "\e[1~" beginning-of-line
-    bindkey "\e[4~" end-of-line
-fi
+# ============================================================================ #
+#                                ALIASES                                       #
+# ============================================================================ #
+# Navigation and lists (eza instead of ls)
+alias 'l=eza'
+alias ls="eza --icons --group-directories-first"
+alias ll="eza -l --icons --git --group-directories-first"
+alias la="eza -a --icons --git --group-directories-first"
+alias lla="eza -la --icons --git --group-directories-first"
+alias tree='eza --tree --icons --git --group-directories-first --ignore-glob="node_modules|cache|.git"'
+alias treea='eza -a --tree --icons --git --group-directories-first --ignore-glob="node_modules|cache|.git"'
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="rkj-repos-mod"
+alias '..=cd ..'
+alias '...=cd ../..'
+alias '....=cd ../../..'
+alias '~=cd ~'
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Reading files (bat instead of cat)
+alias cat="bat"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Search
+alias rg="rg --color=auto"
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# Vim / Neovim
+alias v="nvim"
+alias vim="nvim"
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# Play safe!
+alias 'rm=rm -iv'
+alias 'mv=mv -iv'
+alias 'cp=cp -iv'
+alias "chmod=chmod -c"
+alias "chown=chown -c"
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# For convenience
+alias 'mkdir=mkdir -p'
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# Typing errors...
+alias 'cd..=cd ..'
+alias 'cd~=cd ~'
+alias 'sl=ls'
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# ============================================================================ #
+#                                PLUGINS (HOMEBREW)                            #
+# ============================================================================ #
+# Plugin path depends on Mac architecture (M1/M2 vs Intel)
+HOMEBREW_PREFIX=$(brew --prefix)
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# ============================================================================ #
+#                                TOOL INITIALIZATION                           #
+# ============================================================================ #
+# fzf - fuzzy history search (Ctrl+R)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(fzf --zsh)"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# zoxide - smart cd (run with 'z' or 'zi')
+eval "$(zoxide init zsh)"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    go git-extras
-    #colored-man colorize command-not-found compleat cp \
-    #dircycle extract history history-substring-search rsync safe-paste \
-    #tmux tmuxinator vundle web-search httpie \
-    #docker git git-flow git-extras github gnu-utils mercurial \
-    #postgres redis-cli\
-    #gem ruby rvm \
-    #celery django fabric pip python 
-    #virtualenv virtualenvwrapper \
-    #autopep8 pep8 \
-    #virtualenv-prompt \
-    #cabal golang \
-    #debian systemd sudo 
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-export PATH="$PATH:/home/pstadnik/.rvm/scripts/rvm:/home/pstadnik/.rvm/rubies/ruby-head/bin"
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-export MANPATH="$MANPATH:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-source ~/.utils/aliases.zsh
-
-# Fixes 
-echo DEBIAN_PREVENT_KEYBOARD_CHANGES=yes>>~/.zshenv
-
-export WORKON_HOME='~/.venvs'
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-source /usr/local/bin/virtualenvwrapper.sh
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="/usr/local/sbin:$PATH"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
-export GOPATH="$HOME/devel/go"
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Starship - modern prompt
+eval "$(starship init zsh)"
