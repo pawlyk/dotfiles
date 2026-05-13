@@ -28,6 +28,7 @@ opt.cursorline = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.clipboard = "unnamedplus"
+opt.colorcolumn = "80,120"
 
 -- ========================================================================== --
 --                              PLUGIN MANAGER (LAZY)                         --
@@ -60,7 +61,69 @@ require("lazy").setup({
     end,
   },
 
-  -- 2. File Manager (Loads only on <leader>n)
+  -- 2. Status line
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        options = {
+          icons_enabled = true,
+          theme = 'auto',
+          component_separators = { left = '', right = ''},
+          section_separators = { left = '', right = ''},
+          disabled_filetypes = {
+            statusline = {},
+            winbar = {},
+          },
+          ignore_focus = {},
+          always_divide_middle = true,
+          always_show_tabline = true,
+          globalstatus = false,
+          refresh = {
+            statusline = 1000,
+            tabline = 1000,
+            winbar = 1000,
+            refresh_time = 16, -- ~60fps
+            events = {
+              'WinEnter',
+              'BufEnter',
+              'BufWritePost',
+              'SessionLoadPost',
+              'FileChangedShellPost',
+              'VimResized',
+              'Filetype',
+              'CursorMoved',
+              'CursorMovedI',
+              'ModeChanged',
+            },
+          }
+        },
+        sections = {
+          lualine_a = {'mode'},
+          lualine_b = {'branch', 'diff', 'diagnostics'},
+          lualine_c = {'filename'},
+          lualine_x = {'encoding', 'fileformat', 'filetype'},
+          lualine_y = {'progress'},
+          lualine_z = {'location'}
+        },
+        inactive_sections = {
+          lualine_a = {},
+          lualine_b = {},
+          lualine_c = {'filename'},
+          lualine_x = {'location'},
+          lualine_y = {},
+          lualine_z = {}
+        },
+        tabline = {},
+        winbar = {},
+        inactive_winbar = {},
+        extensions = {}
+      }
+    end,
+  },
+
+  -- 3. File Manager (Loads only on <leader>n)
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -71,7 +134,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons", "MunifTanjim/nui.nvim" }
   },
 
-  -- 3. Search (Loads only on call)
+  -- 4. Search (Loads only on call)
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -82,7 +145,7 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" }
   },
 
-  -- 4. Treesitter (SPEED FIX: Load AFTER opening file)
+  -- 5. Treesitter (SPEED FIX: Load AFTER opening file)
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
@@ -98,7 +161,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 5. Autocompletion (Loads only when you start typing)
+  -- 6. Autocompletion (Loads only when you start typing)
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -124,7 +187,7 @@ require("lazy").setup({
     end,
   },
 
-  -- 6. LSP (Native, no UI blocking)
+  -- 7. LSP (Native, no UI blocking)
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
@@ -178,16 +241,16 @@ require("lazy").setup({
     end
   },
   
-  -- Indent guides
+  -- 8. Indent guides
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
-  -- Rainbow delimiters
+  -- 9. Rainbow delimiters
   { "HiPhish/rainbow-delimiters.nvim" },
 
-  -- Auto-close brackets
+  -- 10. Auto-close brackets
   { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
-  -- Tabs (Bufferline)
+  -- 11. Tabs (Bufferline)
   {
     "akinsho/bufferline.nvim",
     version = "*",
@@ -254,8 +317,12 @@ keymap('n', '<leader>f', '<cmd>Telescope live_grep<cr>', { desc = "Find text (gr
 keymap('n', '<leader>*', '<cmd>Telescope grep_string<cr>', { desc = "Find word under cursor" })
 keymap('n', '<leader>b', '<cmd>Telescope buffers<cr>', { desc = "List of open tabs" })
 
--- Коментування рядка: ,c
+-- Commenting a line: ,c
 vim.keymap.set("n", "<leader>c", "gcc", { remap = true, desc = "Toggle Comment Line" })
 
--- Коментування блоку: виділити текст + ,c
+-- Commenting a block: highlight text + ,c
 vim.keymap.set("v", "<leader>c", "gc", { remap = true, desc = "Toggle Comment Block" })
+
+-- Shift code Right and Left in the visual mode
+vim.keymap.set("v", "<Tab>", ">gv")
+vim.keymap.set("v", "<S-Tab>", "<gv")
